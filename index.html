@@ -72,7 +72,7 @@
 		<div id="account-number-2c" class="app-page">
 			<h2>please enter account number</h2>
 			<div class="input-group">
-			  <input type="text" class="form-control" id="account-number">
+				<input type="password" class="form-control" id="account-number">
 			</div>
 			<div class="btn btn-primary input-passcode">Enter</div>
 		</div>
@@ -100,18 +100,88 @@
 		<div id="passcode-4a" class="app-page">
 			<h2>please enter your passcode</h2>
 			<div class="input-group">
-			  <input type="password" class="form-control" id="passcode" maxlength="4">
+				<input type="password" class="form-control" id="passcode" maxlength="4">
 			</div>
 			<div class="btn btn-primary log-in">Enter</div>
 		</div>
 
 		<div id="main-5a" class="app-page">
 			<h2>what would you like to do?</h2>
+			<div class="row">
+				<div class="col-sm">
+					<div class="card mb-4">
+						<div class="card-body">
+							<h4 class="card-title">Withdraw</h4>
+						</div>
+						<img class="card-img-bottom" src="..." alt="withdraw">
+					</div>
+					<div class="card">
+						<div class="card-body check-balance">
+							<h4 class="card-title">Check Balance</h4>
+						</div>
+						<img class="card-img-bottom" src="..." alt="check balance">
+					</div>
+
+				</div>
+				<div class="col-sm">
+					<div class="card mb-4">
+						<div class="card-body">
+							<h4 class="card-title">Deposite</h4>
+						</div>
+						<img class="card-img-bottom" src="..." alt="Deposite">
+					</div>
+					<div class="card">
+						<div class="card-body">
+							<h4 class="card-title">Transfer</h4>
+						</div>
+						<img class="card-img-bottom" src="..." alt="Transfer">
+					</div>
+				</div>
+				<div class="col-sm">
+					<div class="card sign-out">
+						<div class="card-body">
+							<h4 class="card-title">Sign out</h4>
+						</div>
+						<img class="card-img-bottom" src="..." alt="Sign out">
+					</div>
+				</div>
+			</div>
 		</div>
 
-		<footer>
-			<div class="btn btn-primary float-left" id="backBtn">Back</div>
-			<div class="btn btn-success float-right" id="homeBtn">Home</div>
+
+		<div class="app-page" id="account-balance-15a">
+			<h2>account summary</h2>
+			<div class="ml-5 mt-3">
+				<h4>account number: 65342</h4>
+				<h4>account Balance: $1567.00</h4>
+			</div>
+			<div class="ml-5 mt-3">
+				<h4>account number: 65344</h4>
+				<h4>account Balance: $3567.00</h4>
+			</div>
+		</div>
+
+		<div class="app-page" id="trans-history-16a">
+			<h2>Transaction History</h2>
+			<div class="ml-5 mt-3">
+				<h4>account number: 65342</h4>
+				<h4>account Balance: $1567.00</h4>
+			</div>
+			<div class="ml-5 mt-3">
+				<h4>account number: 65344</h4>
+				<h4>account Balance: $3567.00</h4>
+			</div>
+		</div>
+
+		<div class="app-page" id="sign-out-17a">
+			<h2>you have successfully signed out</h2>
+			<div class="btn btn-success mx-auto mt-4 homeBtn">Home</div>
+		</div>
+
+		<footer class="mt-4">
+			<div class="btn btn-primary float-left backBtn">Back</div>
+			<div class="btn btn-success float-right homeBtn">Home</div>
+			<div class="btn btn-success float-right historyBtn">Transaction History</div>
 		</footer>
 	</div>
 	<script type="text/javascript" src="js/script.js">
