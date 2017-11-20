@@ -1,3 +1,13 @@
 1. Why do wrong account number locks user out? How dose the machine know what is the correct account number for the current user?
+
+Short Answer: It's a security feature.
+
+Long Answer: When you go to an ATM, you have to insert your card. Then it prompts you for your pin. If you mistype your pin, you are asked to try again. You are given 3 attempts before the machine eats your card so that people cannot brute-force your pin.
+
 2. do error count gets cleared to zero ever? E.g. it could be cleared after correct account number, but not when they go back to home screen, otherwise they can keep going back to the home screen to try it. but they should be able to try it with a new card
+
+Answer: Error counts should get zeroed when the user enters the correct pin. Otherwise, if the user is locked out, they will need to "go to the bank" to unlock their account. The "go to the bank" action could be a button in our interface.
+
 3. what does home button do after log-in? Go back to 1a or 5a?
+
+Answer: The home button goes to 5a until the user logs out.
