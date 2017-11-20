@@ -1,0 +1,2 @@
+1. Why do wrong account number locks user out? How dose the machine know what is the correct account number for the current user?
+2. do error count gets cleared to zero ever? E.g. it could be cleared after correct account number, but not when they go back to home screen, otherwise they can keep going back to the home screen to try it. but they should be able to try it with a new card

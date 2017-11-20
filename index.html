@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="js/popper.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<div class="container-fluid mx-auto">
+
+		<div id="wait" class="app-page">
+			<h2>your request is being processed, please wait...</h2>
+		</div>
+
+		<div id="1a" class="app-page">
+			<h1 class="text-center">Tap Anywhere to Begin</h1>
+			<h3 class="text-center">Select Language:</h3>
+			<div class="form-group">
+				<select class="form-control" size="4">
+					<option>English</option>
+					<option>Français</option>
+					<option>Português</option>
+					<option>简体中文</option>
+					<option>繁体中文</option>
+				</select>
+			</div>
+			<i class="fa fa-hand-o-up float-right" aria-hidden="true"></i>
+		</div>
+
+		<div id="2a" class="app-page">
+			<h2>Sign Into Your Account</h2>
+			<div class="row">
+				<div class="col-sm">
+					<div class="card" id="insert-card">
+						<img class="card-img-top" src=""></img>
+						<div class="card-body">
+							<h4 class="card-title">insert card</h4>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm">
+					<div class="card" id="enter-account-number">
+						<img class="card-img-top" src=""></img>
+						<div class="card-body">
+							<h4 class="card-title">enter account number</h4>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm">
+					<div class="card" id="swipe-card">
+						<img class="card-img-top" src=""></img>
+						<div class="card-body">
+							<h4 class="card-title">swipe card</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="2b" class="app-page">
+			<h2>please insert your card</h2>
+			<div class="input-password text-center">Insert</div>
+		</div>
+
+		<div id="2c" class="app-page">
+			<h2>please enter account number</h2>
+			<div class="input-group">
+			  <input type="text" class="form-control" id="account-number">
+			</div>
+			<div class="btn btn-primary input-password">Enter</div>
+		</div>
+
+		<div id="2d" class="app-page">
+			<h2>please swipe your card</h2>
+			<div class="input-password text-center input-password">swipe</div>
+		</div>
+
+		<div id="3a" class="app-page">
+			<h2>incorrect credentials!</h2>
+			<i class="fa fa-times-circle" aria-hidden="true"></i>
+			<h3>you have <span class="error-time"></span> tries left</h3>
+		</div>
+
+		<div id="3b" class="app-page">
+			<h2>max number of attempts exceeded!</h2>
+			<span class="fa-stack">
+				<i class="fa fa-lock fa-stack-1x" aria-hidden="true"></i>
+				<i class="fa fa-circle-thin fa-stack-2x" aria-hidden="true"></i>
+			</span>
+			<h4>Please speak to an employee to unlock your account</h4>
+		</div>
+
+		<div id="4a" class="app-page">
+			<h2>please enter your passcode</h2>
+			<div class="input-group">
+			  <input type="password" class="form-control" id="passcode" maxlength="4">
+			</div>
+			<div class="btn btn-primary log-in">Enter</div>
+		</div>
+
+		<div id="5a" class="app-page">
+			<h2>what would you like to do?</h2>
+		</div>
+
+		<footer>
+			<div class="btn btn-primary float-left" id="backBtn">Back</div>
+			<div class="btn btn-success float-right" id="homeBtn">Home</div>
+		</footer>
+	</div>
+	<script type="text/javascript" src="js/script.js">
+
+
+	</script>
+</body>
+</html>
