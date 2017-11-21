@@ -8,6 +8,7 @@
 	<script src="js/popper.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jQuery.date.min.js" type="text/javascript" charset="utf-8"></script>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -213,13 +214,13 @@
 
 				<div class="withdraw-success-7b app-page">
 					<h2>please take your money</h2>
-					<h3>you have: $1234.00 remaining</h3>
+					<h3>you have: <span class="account-balance"></span> remaining</h3>
 					<i>icon for taking money</i>
 				</div>
 
 				<div class="deposit-success-10b app-page">
 					<h2>deposit successful</h2>
-					<h3>you have: $1227.00</h3>
+					<h3>you have: <span class="account-balance"></span></h3>
 					<footer class="mt-4">
 						<div class="btn btn-primary float-left backBtn">Back</div>
 						<div class="btn btn-success float-right homeBtn">Home</div>
@@ -229,8 +230,8 @@
 				<div class="app-page account-balance-15a app-page">
 					<h2>account summary</h2>
 					<div class="ml-5 mt-3">
-						<h4>account number: 65342</h4>
-						<h4>account Balance: $1567.00</h4>
+						<h4>account number: <span class="account-number"></span></h4>
+						<h4>account Balance: <span class="account-balance"></span></h4>
 					</div>
 					<footer class="mt-4">
 						<div class="btn btn-primary float-left backBtn">Back</div>
@@ -268,10 +269,11 @@
 			</div>
 			<div class="col-sm-2">
 				<div class="btn btn-primary" id="swipe-card">swipe card</div>
-				<div class="btn btn-primary mt-2" id="insert-card">insert card</div>
-				<div class="btn btn-primary mt-2" id="take-card">take card</div>
-				<div class="btn btn-primary mt-2" id="put-money">put money</div>
-				<div class="btn btn-primary mt-2" id="take-money">take money</div>
+				<div class="btn btn-primary mt-2" id="insert-card">Insert card</div>
+				<div class="btn btn-primary mt-2" id="take-card">Take card</div>
+				<div class="btn btn-primary mt-2" id="put-money">Put money</div>
+				<div class="btn btn-primary mt-2" id="take-money">Take money</div>
+				<div class="btn btn-primary mt-2" id="unlock-account">Speak to clerk</div>
 			</div>
 		</div>
 

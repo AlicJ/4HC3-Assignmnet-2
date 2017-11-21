@@ -1,18 +1,20 @@
 var prevState = "";
 var curState = "begin-1a";
 // var curState = "main-5a";
-var accountNumber = 12345678910;
-var passcode = 1234;
-var balance = 1255
-var errorTime = 0;
 var logOutTimeout;
 
 var account = {
-	accountNumber: 12345678910,
+	accountNumber: 1234567890,
 	passcode: 1234,
 	balance: 1255,
-	history: [],
-	locked: false
+	history: [
+		{
+			action: "Deposit",
+			amount: 1255,
+			date: 1503831131922
+		}
+	],
+	errorTime: 0
 }
 
 function nextState(s, time=400){
@@ -21,8 +23,7 @@ function nextState(s, time=400){
 	$("."+curState).hide();
 
 	if (s == "error-3a") {
-		$(".error-time").html(3 - errorTime);
-		// if errorTime
+		$(".error-time").html(3 - account.errorTime);
 	}
 
 	if (time > 0) {
@@ -34,6 +35,13 @@ function nextState(s, time=400){
 		$("."+s).show();
 		prevState = curState;
 		curState = s;
+
+		switch (curState) {
+			case "main-5a":
+				updateAccountBalance(0);
+				updateAccountNumber(account.accountNumber);
+				break;
+		}
 
 	}, time);
 
@@ -63,7 +71,27 @@ function getInputInt(selector) {
 }
 
 function isAccountLocked(){
-	return account.locked;
+	return account.errorTime >= 3;
+}
+
+function updateAccountBalance(action=null, amount) {
+	if (action) {
+		account.balance += amount;
+		updateAccountHistory(action, amount, new Date());
+	}
+	$(".account-balance").html(formatCurrency(account.balance));
+}
+
+function updateAccountNumber(number) {
+	$(".account-number").html(number);
+}
+
+function updateAccountHistory(action, amount, date) {
+	account.history.push({"action": action, "amount": amount, "date": date})
+}
+
+function formatCurrency(amount){
+	return '$' + parseFloat(amount, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString();
 }
 
 $(document).ready(function() {
@@ -137,6 +165,13 @@ $(document).on('click', '#take-money', function(event) {
 	}
 });
 
+$(document).on('click', '#unlock-account', function(event) {
+	event.preventDefault();
+	account.errorTime = 0;
+
+});
+
+
 $(document).on('click', '.begin-1a', function(event) {
 	console.log(event);
 	console.log(event.target.tagName)
@@ -162,9 +197,9 @@ $(document).on('click', '.input-account-number', function(event) {
 	var input = getInputInt("#account-number");
 	if (input < 0) {return;}
 
-	if(input != accountNumber){
-		// errorTime += 1
-		// if (errorTime >= 3) {
+	if(input != account.accountNumber){
+		// account.errorTime += 1
+		// if (account.errorTime >= 3) {
 		// 	nextState("max-error-3b");
 		// 	$(".backBtn").hide();
 		// 	return;
@@ -186,18 +221,17 @@ $(document).on('click', '.log-in', function(event) {
 	if (input < 0) {return;}
 
 	$("#passcode").val("")
-	if (input == passcode){
-		errorTime = 0;
+	if (input == account.passcode){
+		account.errorTime = 0;
 		if (prevState == "insert-2b") {
 			nextState("login-success-4b");
 		}else {
 			nextState("main-5a");
 		}
 	}else{
-		errorTime += 1;
-		if (errorTime >= 3) {
+		account.errorTime += 1;
+		if (account.errorTime >= 3) {
 			nextState("max-error-3b");
-			account.locked = true;
 			return;
 		}
 		nextState("error-3a")
@@ -227,16 +261,16 @@ $(document).on('click', '.enter-amount', function(event) {
 
 	if(curState == "withdraw-amount-6a") {
 		$(".action").html("withdraw")
-		if (input > balance) {
+		if (input > account.balance) {
 			nextState("withdraw-fail-7a");
 		}else {
-			balance -= input;
+			updateAccountBalance("Withdraw", -input);
 			nextState("withdraw-success-7b");
 		}
 	} else if (curState == "deposit-amount-10a") {
 		// add random chance that deposit will fail because of fake money
 		$(".action").html("deposit")
-		balance += input;
+		updateAccountBalance("Deposit", input);
 		nextState("deposit-success-10b");
 	} else if (curState == "transfer-amount-11a") {
 		$(".action").html("transfer")
@@ -251,6 +285,13 @@ $(document).on('click', '.check-balance', function(event) {
 
 $(document).on('click', '.historyBtn', function(event) {
 	event.preventDefault();
+	var ele = "";
+	$.each(account.history, function(index, val) {
+		 ele += "<tr><td>"+val.action+"</td> <td>"+
+		 			formatCurrency(val.amount)+"</td> <td>"+
+		 			$.date(val.date, 'format', 'm/d/Y H:i')+"</td></tr>"
+	});
+	$(".trans-history-16a tbody").html(ele);
 	nextState("trans-history-16a");
 	// $(".historyBtn").hide();
 });
