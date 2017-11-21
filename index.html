@@ -13,13 +13,14 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-	<div class="container-fluid mx-auto">
-
-		<div id="wait" class="app-page">
+	<div class="container-fluid mx-auto mt-3">
+<div class="row">
+	<div class="col-sm-10">
+		<div class="app-page wait">
 			<h2>your request is being processed, please wait...</h2>
 		</div>
 
-		<div id="begin-1a" class="app-page">
+		<div class="app-page begin-1a">
 			<h1 class="text-center">Tap Anywhere to Begin</h1>
 			<h3 class="text-center">Select Language:</h3>
 			<div class="form-group">
@@ -34,11 +35,11 @@
 			<i class="fa fa-hand-o-up float-right" aria-hidden="true"></i>
 		</div>
 
-		<div id="signin-2a" class="app-page">
+		<div class="app-page signin-2a">
 			<h2>Sign Into Your Account</h2>
 			<div class="row">
 				<div class="col-sm">
-					<div class="card insert-card">
+					<div class="card to-insert-card">
 						<img class="card-img-top" src=""></img>
 						<div class="card-body">
 							<h4 class="card-title">insert card</h4>
@@ -46,7 +47,7 @@
 					</div>
 				</div>
 				<div class="col-sm">
-					<div class="card enter-account-number">
+					<div class="card to-enter-account-number">
 						<img class="card-img-top" src=""></img>
 						<div class="card-body">
 							<h4 class="card-title">enter account number</h4>
@@ -54,7 +55,7 @@
 					</div>
 				</div>
 				<div class="col-sm">
-					<div class="card swipe-card">
+					<div class="card to-swipe-card">
 						<img class="card-img-top" src=""></img>
 						<div class="card-body">
 							<h4 class="card-title">swipe card</h4>
@@ -64,31 +65,31 @@
 			</div>
 		</div>
 
-		<div id="insert-2b" class="app-page">
+		<div class="app-page insert-2b">
 			<h2>please insert your card</h2>
-			<div class="input-passcode text-center">Insert</div>
+			<div class="text-center">Insert insert card picture here</div>
 		</div>
 
-		<div id="account-number-2c" class="app-page">
+		<div class="app-page account-number-2c">
 			<h2>please enter account number</h2>
 			<div class="input-group">
 				<input type="password" class="form-control" id="account-number">
 			</div>
-			<div class="btn btn-primary input-passcode">Enter</div>
+			<div class="btn btn-primary input-account-number">Enter</div>
 		</div>
 
-		<div id="swipe-2d" class="app-page">
+		<div class="app-page swipe-2d">
 			<h2>please swipe your card</h2>
-			<div class="input-passcode text-center">swipe</div>
+			<div class="text-center">insert swipe card picture here</div>
 		</div>
 
-		<div id="error-3a" class="app-page">
+		<div class="app-page error-3a">
 			<h2>incorrect credentials!</h2>
 			<i class="fa fa-times-circle" aria-hidden="true"></i>
 			<h3>you have <span class="error-time"></span> tries left</h3>
 		</div>
 
-		<div id="max-error-3b" class="app-page">
+		<div class="app-page max-error-3b">
 			<h2>max number of attempts exceeded!</h2>
 			<span class="fa-stack">
 				<i class="fa fa-lock fa-stack-1x" aria-hidden="true"></i>
@@ -97,7 +98,7 @@
 			<h4>Please speak to an employee to unlock your account</h4>
 		</div>
 
-		<div id="passcode-4a" class="app-page">
+		<div class="app-page passcode-4a">
 			<h2>please enter your passcode</h2>
 			<div class="input-group">
 				<input type="password" class="form-control" id="passcode" maxlength="4">
@@ -105,12 +106,18 @@
 			<div class="btn btn-primary log-in">Enter</div>
 		</div>
 
-		<div id="main-5a" class="app-page">
+		<div class="app-page login-success-4b text-center">
+			<h2>Log in success</h2>
+			<h3>Please take your card</h3>
+			<i>icon for taking card out</i>
+		</div>
+
+		<div class="app-page main-5a">
 			<h2>what would you like to do?</h2>
 			<div class="row">
 				<div class="col-sm">
 					<div class="card mb-4">
-						<div class="card-body">
+						<div class="card-body withdraw">
 							<h4 class="card-title">Withdraw</h4>
 						</div>
 						<img class="card-img-bottom" src="..." alt="withdraw">
@@ -125,10 +132,10 @@
 				</div>
 				<div class="col-sm">
 					<div class="card mb-4">
-						<div class="card-body">
-							<h4 class="card-title">Deposite</h4>
+						<div class="card-body deposit">
+							<h4 class="card-title">Deposit</h4>
 						</div>
-						<img class="card-img-bottom" src="..." alt="Deposite">
+						<img class="card-img-bottom" src="..." alt="Deposit">
 					</div>
 					<div class="card">
 						<div class="card-body">
@@ -148,32 +155,57 @@
 			</div>
 		</div>
 
+		<div class="withdraw-amount-6a deposit-amount-10a transfer-amount-11a app-page">
+			<h2>Please enter the amount you wish to <span class="action"></span> </h2>
+			<div class="input-group">
+				<input type="text" class="form-control" id="amount">
+			</div>
+			<div class="btn btn-primary enter-amount">Enter</div>
+		</div>
 
-		<div class="app-page" id="account-balance-15a">
+		<div class="withdraw-fail-7a app-page">
+			<h2>You do not have sufficient funds for this transaction.</h2>
+			<i>icon for insufficient fund</i>
+		</div>
+
+		<div class="withdraw-success-7b app-page">
+			<h2>please take your money</h2>
+			<h3>you have: $1234.00 remaining</h3>
+			<i>icon for taking money</i>
+		</div>
+
+		<div class="deposit-success-10b app-page">
+			<h2>deposit successful</h2>
+			<h3>you have: $1227.00</h3>
+		</div>
+
+		<div class="app-page account-balance-15a app-page">
 			<h2>account summary</h2>
 			<div class="ml-5 mt-3">
 				<h4>account number: 65342</h4>
 				<h4>account Balance: $1567.00</h4>
 			</div>
-			<div class="ml-5 mt-3">
-				<h4>account number: 65344</h4>
-				<h4>account Balance: $3567.00</h4>
-			</div>
 		</div>
 
-		<div class="app-page" id="trans-history-16a">
+		<div class="app-page trans-history-16a">
 			<h2>Transaction History</h2>
-			<div class="ml-5 mt-3">
-				<h4>account number: 65342</h4>
-				<h4>account Balance: $1567.00</h4>
-			</div>
-			<div class="ml-5 mt-3">
-				<h4>account number: 65344</h4>
-				<h4>account Balance: $3567.00</h4>
-			</div>
+			<table>
+				<thead>
+					<tr><th>Action</th> <th>Amount</th> <th>Time</th></tr>
+				</thead>
+				<tbody>
+					<tr><td>Deposit</td> <td>$10</td> <td>2017/09/01 12:35</td></tr>
+					<tr><td>Deposit</td> <td>$10</td> <td>2017/09/01 12:35</td></tr>
+					<tr><td>Deposit</td> <td>$10</td> <td>2017/09/01 12:35</td></tr>
+					<tr><td>Deposit</td> <td>$10</td> <td>2017/09/01 12:35</td></tr>
+					<tr><td>Deposit</td> <td>$10</td> <td>2017/09/01 12:35</td></tr>
+					<tr><td>Deposit</td> <td>$10</td> <td>2017/09/01 12:35</td></tr>
+					<tr><td>Deposit</td> <td>$10</td> <td>2017/09/01 12:35</td></tr>
+				</tbody>
+			</table>
 		</div>
 
-		<div class="app-page" id="sign-out-17a">
+		<div class="app-page sign-out-17a">
 			<h2>you have successfully signed out</h2>
 			<div class="btn btn-success mx-auto mt-4 homeBtn">Home</div>
 		</div>
@@ -183,6 +215,17 @@
 			<div class="btn btn-success float-right homeBtn">Home</div>
 			<div class="btn btn-success float-right historyBtn">Transaction History</div>
 		</footer>
+
+	</div>
+	<div class="col-sm-2">
+		<div class="btn btn-primary" id="swipe-card">swipe card</div>
+		<div class="btn btn-primary mt-2" id="insert-card">insert card</div>
+		<div class="btn btn-primary mt-2" id="take-card">take card</div>
+		<div class="btn btn-primary mt-2" id="put-money">put money</div>
+		<div class="btn btn-primary mt-2" id="take-money">take money</div>
+	</div>
+</div>
+
 	</div>
 	<script type="text/javascript" src="js/script.js">
 

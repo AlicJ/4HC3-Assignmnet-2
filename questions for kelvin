@@ -11,3 +11,5 @@ Answer: Error counts should get zeroed when the user enters the correct pin. Oth
 3. what does home button do after log-in? Go back to 1a or 5a?
 
 Answer: The home button goes to 5a until the user logs out.
+
+4. do we have options to print receipt?
