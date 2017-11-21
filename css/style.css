@@ -5,9 +5,3 @@ h1, h2, h3, h4 {
 .app-page{
 	display: none;
 }
-
-.backBtn,
-.homeBtn,
-.historyBtn {
-	display: none;
-}

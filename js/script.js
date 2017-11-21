@@ -1,8 +1,8 @@
 var prevState = "";
-var curState = "begin-1a";
-// var curState = "main-5a";
-var accountNumber = "12345678910";
-var passcode = "1234";
+// var curState = "begin-1a";
+var curState = "main-5a";
+var accountNumber = 12345678910;
+var passcode = 1234;
 var balance = 1255
 var errorTime = 0;
 
@@ -20,65 +20,12 @@ function nextState(s, time=400){
 		$(".wait").show();
 	}
 
-
-	//before transition
-	switch (s) {
-		case "login-success-4b":
-			$(".backBtn").hide();
-			$(".homeBtn").hide();
-			break;
-		case "main-5a":
-			$(".backBtn").hide();
-			break;
-		case "withdraw-success-7b":
-			$(".backBtn").hide();
-			$(".homeBtn").hide();
-			break;
-		case "deposit-success-10b":
-			$(".homeBtn").hide();
-			break;
-		case "account-balance-15a":
-			$("footer .homeBtn").hide();
-			break;
-		case "trans-history-16a":
-			$(".historyBtn").hide();
-			break;
-		case "sign-out-17a":
-			$("footer .homeBtn").hide();
-			break;
-	}
-
 	setTimeout(function(){
 		$(".wait").hide();
 		$("."+s).show();
 		prevState = curState;
 		curState = s;
-		//after transition
-		switch (curState) {
-			case "insert-2b":
-			case "account-number-2c":
-			case "swipe-2d":
-				$(".backBtn").show();
-				break;
-			case "withdraw-amount-6a":
-			case "deposit-amount-10a":
-			case "transfer-amount-11a":
-				$(".backBtn").show();
-				$(".homeBtn").show();
-				break;
-			case "account-balance-15a":
-				$("footer .homeBtn").hide();
-				$(".historyBtn").show();
-				break;
-			case "trans-history-16a":
-				$(".historyBtn").hide();
-				$(".backBtn").show();
-				$(".homeBtn").show();
-				break;
-			case "sign-out-17a":
-				$(".sign-out-17a .homeBtn").show();
-				break;
-		}
+
 	}, time);
 
 }
@@ -95,27 +42,45 @@ function askMoreService(){
 	// no -> exit, show thank you screen
 }
 
+function getInputInt(selector) {
+	var input = parseInt($(selector).val());
+	$(selector).val("");
+		console.log(input)
+
+	if (input <= 0 || isNaN(input)) {
+		return -1;
+	}
+	return input;
+}
+
 $(document).ready(function() {
 	nextState(curState, 0)
 });
 
 $(document).on('click', '.homeBtn', function(event) {
 	event.preventDefault();
+	$("input").val("");
 	// TODO: need to eject card at certain state
 	var l = curState.split("-");
 	var n = parseInt(l[l.length - 1]);
 	if (n < 5 || n == 17) {
-		nextState("begin-1a");
+		nextState("begin-1a", 0);
 	}else {
-		nextState("main-5a");
+		nextState("main-5a", 0);
 	}
 });
 
 $(document).on('click', '.backBtn', function(event) {
 	event.preventDefault();
+	$("input").val("");
 	// TODO: need to eject card at certain state
-	if (curState == "account-number-2c" || curState == "passcode-4a") { prevState = "signin-2a"}
-		nextState(prevState);
+	if ($.inArray(curState, ["account-number-2c",
+							 "passcode-4a"]) >= 0) { prevState = "signin-2a";}
+	if ($.inArray(curState, ["account-balance-15a",
+							 "withdraw-amount-6a",
+							 "deposit-amount-10a",
+							 "transfer-amount-11a"]) >= 0) { prevState = "main-5a";}
+	nextState(prevState);
 });
 
 $(document).on('click', '#swipe-card', function(event) {
@@ -172,16 +137,17 @@ $(document).on('click', '.to-swipe-card', function(event) {
 
 $(document).on('click', '.input-account-number', function(event) {
 	event.preventDefault();
-	var input = $("#account-number").val("")
-	$("#account-number").val("")
+	var input = getInputInt("#account-number");
+	if (input < 0) {return;}
+
 	if(input != accountNumber){
-		errorTime += 1
-		if (errorTime >= 3) {
-			nextState("max-error-3b");
-			$(".backBtn").hide();
-			return;
-		}
-		nextState("error-3a");
+		// errorTime += 1
+		// if (errorTime >= 3) {
+		// 	nextState("max-error-3b");
+		// 	$(".backBtn").hide();
+		// 	return;
+		// }
+		nextState("account-error-3c");
 		return;
 	}
 
@@ -190,7 +156,9 @@ $(document).on('click', '.input-account-number', function(event) {
 
 $(document).on('click', '.log-in', function(event) {
 	event.preventDefault();
-	var input = $("#passcode").val();
+	var input = getInputInt("#passcode");
+	if (input < 0) {return;}
+
 	$("#passcode").val("")
 	if (input == passcode){
 		errorTime = 0;
@@ -224,9 +192,9 @@ $(document).on('click', '.transfer', function(event) {
 
 $(document).on('click', '.enter-amount', function(event) {
 	event.preventDefault();
-	var input = parseInt($("#amount").val());
-	$("#amount").val("")
-	if (input <= 0 || isNaN(input)) {return;}
+	var input = getInputInt("#amount");
+	if (input < 0) {return;}
+
 	if(curState == "withdraw-amount-6a") {
 		$(".action").html("withdraw")
 		if (input > balance) {
@@ -254,10 +222,13 @@ $(document).on('click', '.check-balance', function(event) {
 $(document).on('click', '.historyBtn', function(event) {
 	event.preventDefault();
 	nextState("trans-history-16a");
-	$(".historyBtn").hide();
+	// $(".historyBtn").hide();
 });
 
 $(document).on('click', '.sign-out', function(event) {
 	event.preventDefault();
 	nextState("sign-out-17a");
+	setTimeout(function(){
+		nextState("begin-1a")
+	}, 5000);
 });
