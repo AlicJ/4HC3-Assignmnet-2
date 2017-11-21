@@ -1,7 +1,13 @@
 var prevState = "";
-var curState = "begin-1a";
-// var curState = "main-5a";
+// var curState = "begin-1a";
+var curState = "main-5a";
 var logOutTimeout;
+var inputAccountNumber;
+var amountToTransfer;
+var accountToTransfer;
+var MAX_ACCOUNT_NUMBER = 9999999999;
+var MIN_ACCOUNT_NUMBER = 1000000000;
+
 
 var account = {
 	accountNumber: 1234567890,
@@ -17,7 +23,7 @@ var account = {
 	errorTime: 0
 }
 
-function nextState(s, time=400){
+function nextState(s, time=200){
 	var page = s;
 
 	$("."+curState).hide();
@@ -74,10 +80,18 @@ function isAccountLocked(){
 	return account.errorTime >= 3;
 }
 
-function updateAccountBalance(action=null, amount) {
+function updateAccountBalance(action=null, amount, transferAccount=0) {
 	if (action) {
-		account.balance += amount;
+		if (action == "Deposit"){
+			account.balance += amount;
+		}else {
+			account.balance -= amount;
+		}
+		if (action == "Transfer") {
+			action += " to Account " + transferAccount;
+		}
 		updateAccountHistory(action, amount, new Date());
+		saveAccount();
 	}
 	$(".account-balance").html(formatCurrency(account.balance));
 }
@@ -94,8 +108,22 @@ function formatCurrency(amount){
 	return '$' + parseFloat(amount, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString();
 }
 
+function saveAccount(){
+	localStorage.setItem("account", JSON.stringify(account));
+}
+
+function loadAccount(){
+	var temp = localStorage.getItem("account");
+	if (temp == null) {
+		saveAccount();
+	} else{
+		account = JSON.parse(temp)
+	}
+}
+
 $(document).ready(function() {
 	nextState(curState, 0)
+	loadAccount();
 });
 
 $(document).on('click', '.homeBtn', function(event) {
@@ -208,6 +236,12 @@ $(document).on('click', '.input-account-number', function(event) {
 		return;
 	}
 
+	if (input > MAX_ACCOUNT_NUMBER || input < MIN_ACCOUNT_NUMBER) {
+		nextState("account-error-3c");
+	} else {
+		inputAccountNumber = input;
+	}
+
 	if (isAccountLocked()) {
 		nextState("max-error-3b");
 	}else{
@@ -221,7 +255,7 @@ $(document).on('click', '.log-in', function(event) {
 	if (input < 0) {return;}
 
 	$("#passcode").val("")
-	if (input == account.passcode){
+	if (inputAccountNumber == account.accountNumber && input == account.passcode){
 		account.errorTime = 0;
 		if (prevState == "insert-2b") {
 			nextState("login-success-4b");
@@ -241,17 +275,20 @@ $(document).on('click', '.log-in', function(event) {
 
 $(document).on('click', '.withdraw', function(event) {
 	event.preventDefault();
+	$(".action").html("withdraw")
 	nextState("withdraw-amount-6a");
 });
 
 $(document).on('click', '.deposit', function(event) {
 	event.preventDefault();
+	$(".action").html("deposit")
 	nextState("deposit-amount-10a");
 });
 
 $(document).on('click', '.transfer', function(event) {
 	event.preventDefault();
-	nextState("withdraw-amount-6a");
+	$(".action").html("transfer")
+	nextState("transfer-amount-11a");
 });
 
 $(document).on('click', '.enter-amount', function(event) {
@@ -260,21 +297,37 @@ $(document).on('click', '.enter-amount', function(event) {
 	if (input < 0) {return;}
 
 	if(curState == "withdraw-amount-6a") {
-		$(".action").html("withdraw")
 		if (input > account.balance) {
-			nextState("withdraw-fail-7a");
+			nextState("insufficient-fund-7a");
 		}else {
-			updateAccountBalance("Withdraw", -input);
+			updateAccountBalance("Withdraw", input);
 			nextState("withdraw-success-7b");
 		}
 	} else if (curState == "deposit-amount-10a") {
 		// add random chance that deposit will fail because of fake money
-		$(".action").html("deposit")
 		updateAccountBalance("Deposit", input);
 		nextState("deposit-success-10b");
 	} else if (curState == "transfer-amount-11a") {
-		$(".action").html("transfer")
+		if (input > account.balance) {
+			nextState("insufficient-fund-7a");
+		}else {
+			nextState("transfer-account-12a");
+			amountToTransfer = input;
+		}
+	}
+});
 
+$(document).on('click', '.input-transfer-account-number', function(event) {
+	event.preventDefault();
+	var input = getInputInt("#transfer-account-number");
+	if (input < 0) {return;}
+	if (input > MAX_ACCOUNT_NUMBER || input < MIN_ACCOUNT_NUMBER) {
+		nextState("account-error-3c");
+	} else if (input == account.accountNumber) {
+		nextState("transfer-account-error-13a");
+	} else {
+		updateAccountBalance("Transfer", amountToTransfer, input);
+		nextState("transfer-success-14a");
 	}
 });
 
@@ -293,7 +346,6 @@ $(document).on('click', '.historyBtn', function(event) {
 	});
 	$(".trans-history-16a tbody").html(ele);
 	nextState("trans-history-16a");
-	// $(".historyBtn").hide();
 });
 
 $(document).on('click', '.sign-out', function(event) {

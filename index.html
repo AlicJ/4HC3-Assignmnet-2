@@ -122,7 +122,7 @@
 				</div>
 
 				<div class="app-page account-error-3c">
-					<h2>incorrect account number!</h2>
+					<h2>Account number is not valid!</h2>
 					<i class="fa fa-times-circle" aria-hidden="true"></i>
 					<footer class="mt-4">
 						<div class="btn btn-primary float-left backBtn">Back</div>
@@ -152,14 +152,14 @@
 					<h2>what would you like to do?</h2>
 					<div class="row">
 						<div class="col-sm">
-							<div class="card mb-4">
-								<div class="card-body withdraw">
+							<div class="card mb-4 withdraw">
+								<div class="card-body">
 									<h4 class="card-title">Withdraw</h4>
 								</div>
 								<img class="card-img-bottom" src="..." alt="withdraw">
 							</div>
-							<div class="card">
-								<div class="card-body check-balance">
+							<div class="card check-balance">
+								<div class="card-body">
 									<h4 class="card-title">Check Balance</h4>
 								</div>
 								<img class="card-img-bottom" src="..." alt="check balance">
@@ -167,13 +167,13 @@
 
 						</div>
 						<div class="col-sm">
-							<div class="card mb-4">
-								<div class="card-body deposit">
+							<div class="card mb-4 deposit">
+								<div class="card-body">
 									<h4 class="card-title">Deposit</h4>
 								</div>
 								<img class="card-img-bottom" src="..." alt="Deposit">
 							</div>
-							<div class="card">
+							<div class="card transfer">
 								<div class="card-body">
 									<h4 class="card-title">Transfer</h4>
 								</div>
@@ -181,6 +181,12 @@
 							</div>
 						</div>
 						<div class="col-sm">
+							<div class="card mb-4 settings">
+								<div class="card-body">
+									<h4 class="card-title">Settings</h4>
+								</div>
+								<img class="card-img-bottom" src="..." alt="Sign out">
+							</div>
 							<div class="card sign-out">
 								<div class="card-body">
 									<h4 class="card-title">Sign out</h4>
@@ -203,7 +209,20 @@
 					</footer>
 				</div>
 
-				<div class="withdraw-fail-7a app-page">
+				<div class="app-page transfer-account-12a">
+					<h2>please enter the account number you wish to transfer to</h2>
+					<div class="input-group">
+						<input type="password" class="form-control" id="transfer-account-number">
+					</div>
+					<div class="btn btn-primary input-transfer-account-number">Enter</div>
+					<footer class="mt-4">
+						<div class="btn btn-primary float-left backBtn">Back</div>
+						<div class="btn btn-success float-right homeBtn">Home</div>
+					</footer>
+				</div>
+
+
+				<div class="insufficient-fund-7a app-page">
 					<h2>You do not have sufficient funds for this transaction.</h2>
 					<i>icon for insufficient fund</i>
 					<footer class="mt-4">
@@ -220,6 +239,24 @@
 
 				<div class="deposit-success-10b app-page">
 					<h2>deposit successful</h2>
+					<h3>you have: <span class="account-balance"></span></h3>
+					<footer class="mt-4">
+						<div class="btn btn-primary float-left backBtn">Back</div>
+						<div class="btn btn-success float-right homeBtn">Home</div>
+					</footer>
+				</div>
+
+				<div class="transfer-account-error-13a app-page">
+					<h2>You cannot transfer money to your own account!</h2>
+					<i>icon for error</i>
+					<footer class="mt-4">
+						<div class="btn btn-primary float-left backBtn">Back</div>
+						<div class="btn btn-success float-right homeBtn">Home</div>
+					</footer>
+				</div>
+
+				<div class="transfer-success-14a app-page">
+					<h2>transfer successful</h2>
 					<h3>you have: <span class="account-balance"></span></h3>
 					<footer class="mt-4">
 						<div class="btn btn-primary float-left backBtn">Back</div>

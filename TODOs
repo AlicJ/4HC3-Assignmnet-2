@@ -1,6 +1,5 @@
 TODOs
-- don't show back button at 5a, but need to show them after 6 10 11 15
-- back button of 6 10 11 15 needs go to 5a
+- ~~don't show back button at 5a, but need to show them after 6 10 11 15
+- ~~back button of 6 10 11 15 needs go to 5a
 - react to swipe card and insert card before logged in
-- remove take card and take money if they shouldn't exist
-- make var balance actually apear in page
+- ~~make var balance actually apear in page
