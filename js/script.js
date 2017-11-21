@@ -1,10 +1,19 @@
 var prevState = "";
-// var curState = "begin-1a";
-var curState = "main-5a";
+var curState = "begin-1a";
+// var curState = "main-5a";
 var accountNumber = 12345678910;
 var passcode = 1234;
 var balance = 1255
 var errorTime = 0;
+var logOutTimeout;
+
+var account = {
+	accountNumber: 12345678910,
+	passcode: 1234,
+	balance: 1255,
+	history: [],
+	locked: false
+}
 
 function nextState(s, time=400){
 	var page = s;
@@ -53,6 +62,10 @@ function getInputInt(selector) {
 	return input;
 }
 
+function isAccountLocked(){
+	return account.locked;
+}
+
 $(document).ready(function() {
 	nextState(curState, 0)
 });
@@ -64,6 +77,7 @@ $(document).on('click', '.homeBtn', function(event) {
 	var l = curState.split("-");
 	var n = parseInt(l[l.length - 1]);
 	if (n < 5 || n == 17) {
+		clearInterval(logOutTimeout);
 		nextState("begin-1a", 0);
 	}else {
 		nextState("main-5a", 0);
@@ -85,7 +99,11 @@ $(document).on('click', '.backBtn', function(event) {
 
 $(document).on('click', '#swipe-card', function(event) {
 	if (curState == "swipe-2d") {
-		nextState("passcode-4a");
+		if (isAccountLocked()) {
+			nextState("max-error-3b");
+		}else{
+			nextState("passcode-4a");
+		}
 	} else {
 		// display error
 	}
@@ -93,7 +111,11 @@ $(document).on('click', '#swipe-card', function(event) {
 
 $(document).on('click', '#insert-card', function(event) {
 	if (curState == "insert-2b") {
-		nextState("passcode-4a");
+		if (isAccountLocked()) {
+			nextState("max-error-3b");
+		}else{
+			nextState("passcode-4a");
+		}
 	} else {
 		// display error
 	}
@@ -151,7 +173,11 @@ $(document).on('click', '.input-account-number', function(event) {
 		return;
 	}
 
-	nextState("passcode-4a");
+	if (isAccountLocked()) {
+		nextState("max-error-3b");
+	}else{
+		nextState("passcode-4a");
+	}
 });
 
 $(document).on('click', '.log-in', function(event) {
@@ -162,12 +188,16 @@ $(document).on('click', '.log-in', function(event) {
 	$("#passcode").val("")
 	if (input == passcode){
 		errorTime = 0;
-		nextState("login-success-4b");
+		if (prevState == "insert-2b") {
+			nextState("login-success-4b");
+		}else {
+			nextState("main-5a");
+		}
 	}else{
 		errorTime += 1;
 		if (errorTime >= 3) {
 			nextState("max-error-3b");
-			$(".backBtn").hide();
+			account.locked = true;
 			return;
 		}
 		nextState("error-3a")
@@ -228,7 +258,7 @@ $(document).on('click', '.historyBtn', function(event) {
 $(document).on('click', '.sign-out', function(event) {
 	event.preventDefault();
 	nextState("sign-out-17a");
-	setTimeout(function(){
+	logOutTimeout = setTimeout(function(){
 		nextState("begin-1a")
 	}, 5000);
 });
