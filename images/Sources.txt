@@ -1,0 +1,29 @@
+enter_pin.png: https://maxcdn.icons8.com/iOS7/PNG/512/Security/enter_pin-512.png
+
+insert_card.png:https://cdn2.iconfinder.com/data/icons/vending-machine/500/insert-512.png
+
+swipe_card.png: http://www.free-icons-download.net/images/credit-card-icons-73592.png
+
+incorrect.png: https://cdn3.iconfinder.com/data/icons/simple-web-navigation/165/cross-512.png
+
+locked.png: http://wfarm4.dataknet.com/static/resources/icons/set112/40e2fa93.png
+
+touch.png: http://icons.iconarchive.com/icons/iconsmind/outline/512/Hand-Touch-icon.png
+withdraw.png: https://cdn2.iconfinder.com/data/icons/vending-machine/500/piece-512.png
+
+no_money.png: https://cdn0.iconfinder.com/data/icons/huge-business-icons/512/No_money.png
+deposit.png: https://cdn2.iconfinder.com/data/icons/bisicons-office-pack/512/Save_money-512.png
+
+check.png: https://cdn3.iconfinder.com/data/icons/atm-machine-1/52/16-512.png
+
+transfer.png: https://cdn4.iconfinder.com/data/icons/agriculture-soft/512/bank_finance_cash_dollar_purchase_money_transfer_buy-512.png
+
+signout.png: https://cdn1.iconfinder.com/data/icons/interface-elements-ii-1/512/Logout-512.png
+
+down_arrow.png: http://www.pngmart.com/image/26190
+
+back_icon.png: https://d30y9cdsu7xlg0.cloudfront.net/png/11539-200.png
+
+home_icon.png: http://free-icon-rainbow.com/i/icon_00570/icon_005700_256.png
+
+history.png: https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_history_48px-512.png
