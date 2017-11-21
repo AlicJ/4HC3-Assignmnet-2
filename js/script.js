@@ -1,6 +1,6 @@
 var prevState = "";
-// var curState = "begin-1a";
-var curState = "main-5a";
+var curState = "begin-1a";
+//var curState = "main-5a";
 var logOutTimeout;
 var inputAccountNumber;
 var amountToTransfer;
@@ -158,6 +158,7 @@ $(document).on('click', '#swipe-card', function(event) {
 		if (isAccountLocked()) {
 			nextState("max-error-3b");
 		}else{
+			inputAccountNumber = '1234567890';
 			nextState("passcode-4a");
 		}
 	} else {
@@ -170,6 +171,7 @@ $(document).on('click', '#insert-card', function(event) {
 		if (isAccountLocked()) {
 			nextState("max-error-3b");
 		}else{
+			inputAccountNumber = '1234567890';
 			nextState("passcode-4a");
 		}
 	} else {
