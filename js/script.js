@@ -196,9 +196,13 @@ $(document).on('click', '#take-money', function(event) {
 });
 
 $(document).on('click', '#unlock-account', function(event) {
-	event.preventDefault();
-	account.errorTime = 0;
-
+	if(isAccountLocked()){
+		event.preventDefault();
+		account.errorTime = 0;
+		nextState("begin-1a");
+	} else{
+		console.log("You went to the clerk but they couldn't help you because your account was not locked.");
+	}
 });
 
 
