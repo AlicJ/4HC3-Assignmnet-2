@@ -27,3 +27,5 @@ back_icon.png: https://d30y9cdsu7xlg0.cloudfront.net/png/11539-200.png
 home_icon.png: http://free-icon-rainbow.com/i/icon_00570/icon_005700_256.png
 
 history.png: https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_history_48px-512.png
+
+reset-pin.png: https://d30y9cdsu7xlg0.cloudfront.net/png/59012-200.png
