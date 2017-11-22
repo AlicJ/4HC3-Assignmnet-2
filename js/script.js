@@ -1,11 +1,12 @@
 var prevState = "";
-var curState = "begin-1a";
-// var curState = "main-5a";
+// var curState = "begin-1a";
+var curState = "main-5a";
 var logOutTimeout;
 
 var inputAccountNumber;
 var amountToTransfer;
 var accountToTransfer;
+var amountToDeposit;
 var MAX_ACCOUNT_NUMBER = 9999999999;
 var MIN_ACCOUNT_NUMBER = 1000000000;
 var MAX_PASSCODE_LENGTH = 4;
@@ -72,7 +73,6 @@ function askMoreService(){
 function getInputInt(selector) {
 	var input = parseInt($(selector).val());
 	$(selector).val("");
-		console.log(input)
 
 	if (input <= 0 || isNaN(input)) {
 		return -1;
@@ -167,7 +167,7 @@ $(document).on('click', '#swipe-card', function(event) {
 			nextState("passcode-4a");
 		}
 	} else {
-		// display error
+		console.log("The machine doesn't react to your action.")
 	}
 });
 
@@ -181,23 +181,32 @@ $(document).on('click', '#insert-card', function(event) {
 			nextState("passcode-4a");
 		}
 	} else {
-		// display error
+		console.log("The machine doesn't react to your action.")
 	}
 });
 
 $(document).on('click', '#take-card', function(event) {
 	if (curState == "login-success-4b") {
 		nextState("main-5a", 0);
+	}else{
+		console.log("There is no card to take");
 	}
 });
 
 $(document).on('click', '#put-money', function(event) {
-
+	if(curState == "deposit-money-10b") {
+		updateAccountBalance("Deposit", amountToDeposit);
+		nextState("deposit-success-10b");
+	}else{
+		console.log("The machine is not taking your money");
+	}
 });
 
 $(document).on('click', '#take-money', function(event) {
 	if (curState == "withdraw-success-7b") {
 		nextState("main-5a");
+	}else{
+		console.log("There is no money to take");
 	}
 });
 
@@ -325,8 +334,8 @@ $(document).on('click', '.enter-amount', function(event) {
 		}
 	} else if (curState == "deposit-amount-10a") {
 		// add random chance that deposit will fail because of fake money
-		updateAccountBalance("Deposit", input);
-		nextState("deposit-success-10b");
+		amountToDeposit = input;
+		nextState("deposit-money-10b");
 	} else if (curState == "transfer-amount-11a") {
 		if (input > account.balance) {
 			nextState("insufficient-fund-7a");
@@ -394,5 +403,4 @@ $(document).on('click', '.key, .widekey', function(event) {
 		}
 		$("input:visible").val(curVal + input);
 	}
-	console.log($("input:visible").val());
 });

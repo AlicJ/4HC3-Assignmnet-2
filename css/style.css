@@ -176,7 +176,7 @@ input {
 }
 
 .insert-2b {
-	background-image: url(../images/take-card.png);
+	background-image: url(../images/insert-card.png);
 }
 
 .swipe-2d {
@@ -184,7 +184,7 @@ input {
 }
 
 .login-success-4b {
-	background-image: url(../images/insert-card.png);
+	background-image: url(../images/take-card.png);
 }
 
 .insufficient-fund-7a {
@@ -193,6 +193,10 @@ input {
 
 .withdraw-success-7b {
 	background-image: url(../images/withdraw.png);
+}
+
+.deposit-money-10b {
+	background-image: url(../images/deposit-money.png);
 }
 
 .sign-out-17a {
@@ -204,7 +208,8 @@ input {
 .login-success-4b,
 .insufficient-fund-7a,
 .withdraw-success-7b,
-.sign-out-17a  {
+.sign-out-17a,
+.deposit-money-10b  {
 	background-position: center 40%;
 	background-repeat: no-repeat;
 	background-size: 35%;
