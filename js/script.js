@@ -214,10 +214,16 @@ $(document).on('click', '#unlock-account', function(event) {
 
 $(document).on('click', '.begin-1a', function(event) {
 	console.log(event);
-	console.log(event.target.tagName)
-	if ($.inArray(event.target.tagName, ["SELECT", "OPTION"]) > -1) {return};
+	console.log(event.target.className)
+	if (event.target.className.indexOf("langBtn") >= 0) {return};
 	nextState("signin-2a", 0);
 	$(".homeBtn").show();
+});
+
+$(document).on('click', '.langBtn', function(event) {
+	event.preventDefault();
+	$(".langBtn").removeClass('active');
+	$(this).addClass('active');
 });
 
 $(document).on('click', '.to-insert-card', function(event) {
