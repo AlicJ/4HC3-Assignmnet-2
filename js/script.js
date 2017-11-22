@@ -1,6 +1,7 @@
 var prevState = "";
 // var curState = "begin-1a";
-var curState = "main-5a";
+// var curState = "main-5a";
+var curState = "transfer-account-error-13a"
 var logOutTimeout;
 
 var inputAccountNumber;
