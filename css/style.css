@@ -1,6 +1,7 @@
 h1, h2, h3, h4 {
 	text-transform: capitalize;
 	margin-bottom: 30px;
+	text-align: center;
 }
 
 footer {
@@ -89,7 +90,7 @@ input {
 }
 
 .begin-1a {
-	background: url(../images/touch.png);
+	background-image: url(../images/touch.png);
 	background-position: center 35%;
 	background-repeat: no-repeat;
 	background-size: 30%;
@@ -159,56 +160,91 @@ input {
 }
 
 .insert-2b {
-	background: url(../images/insert-card.png);
+	background-image: url(../images/take-card.png);
 }
 
 .swipe-2d {
-	background: url(../images/swipe-card.png);
+	background-image: url(../images/swipe-card.png);
+}
+
+.login-success-4b {
+	background-image: url(../images/insert-card.png);
+}
+
+.insufficient-fund-7a {
+	background-image: url(../images/insufficient-fund.png);
+}
+
+.withdraw-success-7b {
+	background-image: url(../images/withdraw.png);
 }
 
 .insert-2b,
-.swipe-2d {
-	background-position: center 35%;
+.swipe-2d,
+.login-success-4b,
+.insufficient-fund-7a,
+.withdraw-success-7b  {
+	background-position: center 40%;
 	background-repeat: no-repeat;
 	background-size: 35%;
 }
 
-.withdraw {
-	background: url(../images/withdraw.png);
-}
-.check-balance {
-	background: url(../images/check-balance.png);
-}
-.deposit {
-	background: url(../images/deposit.png);
-}
-.transfer {
-	background: url(../images/transfer.png);
-}
-.settings {
-	background: url(../images/settings.png);
-}
-.sign-out  {
-	background: url(../images/sign-out.png);
+.withdraw-success-7b {
+	background-position: center 60%;
 }
 
-.withdraw,
-.check-balance,
-.deposit,
-.transfer,
-.settings,
-.sign-out {
+.error-3a,
+.account-error-3c,
+.transfer-account-error-13a {
+	background-image: url(../images/error.png);
+}
+
+.max-error-3b {
+	background-image: url(../images/locked.png);
+}
+
+.error-3a,
+.max-error-3b,
+.account-error-3c,
+.transfer-account-error-13a {
 	background-position: center 75%;
 	background-repeat: no-repeat;
-	background-size: 50%;
+	background-size: 30%;
 }
 
-.withdraw,
-.check-balance,
-.deposit,
-.transfer,
-.settings,
-.sign-out {
+.transfer-account-error-13a {
+	background-position: center 45%;
+}
+
+.account-error-3c {
+	background-position: center 60%;
+}
+
+.card.withdraw {
+	background-image: url(../images/withdraw.png);
+}
+.card.check-balance {
+	background-image: url(../images/check-balance.png);
+}
+.card.deposit {
+	background-image: url(../images/deposit.png);
+}
+.card.transfer {
+	background-image: url(../images/transfer.png);
+}
+.card.settings {
+	background-image: url(../images/settings.png);
+}
+.card.sign-out  {
+	background-image: url(../images/sign-out.png);
+}
+
+.card.withdraw,
+.card.check-balance,
+.card.deposit,
+.card.transfer,
+.card.settings,
+.card.sign-out {
 	background-position: center 75%;
 	background-repeat: no-repeat;
 	background-size: 50%;
