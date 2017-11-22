@@ -2,11 +2,14 @@ var prevState = "";
 var curState = "begin-1a";
 //var curState = "main-5a";
 var logOutTimeout;
+
 var inputAccountNumber;
 var amountToTransfer;
 var accountToTransfer;
 var MAX_ACCOUNT_NUMBER = 9999999999;
 var MIN_ACCOUNT_NUMBER = 1000000000;
+var MAX_PASSCODE_LENGTH = 4;
+var MAX_ACCOUNT_NUMBER_LENGTH = 10;
 
 
 var account = {
@@ -158,7 +161,7 @@ $(document).on('click', '#swipe-card', function(event) {
 		if (isAccountLocked()) {
 			nextState("max-error-3b");
 		}else{
-			inputAccountNumber = '1234567890';
+			inputAccountNumber = account.accountNumber;
 			nextState("passcode-4a");
 		}
 	} else {
@@ -171,7 +174,7 @@ $(document).on('click', '#insert-card', function(event) {
 		if (isAccountLocked()) {
 			nextState("max-error-3b");
 		}else{
-			inputAccountNumber = '1234567890';
+			inputAccountNumber = account.accountNumber;
 			nextState("passcode-4a");
 		}
 	} else {
@@ -360,4 +363,24 @@ $(document).on('click', '.sign-out', function(event) {
 	logOutTimeout = setTimeout(function(){
 		nextState("begin-1a")
 	}, 5000);
+});
+
+$(document).on('click', '.key, .widekey', function(event) {
+	event.preventDefault();
+	var input = $(this).html();
+	var curVal = $("input:visible").val();
+	if (input == "Clear") {
+		$("input:visible").val("");
+	} else if (input == "Enter") {
+		//
+	} else {
+		if (curState == "passcode-4a" && curVal.length == MAX_PASSCODE_LENGTH) {
+			return;
+		} else if ($.inArray(curState, ["account-number-2c", "transfer-account-12a",]) >= 0
+			&& curVal.length == MAX_ACCOUNT_NUMBER_LENGTH) {
+			return;
+		}
+		$("input:visible").val(curVal + input);
+	}
+	console.log($("input:visible").val());
 });

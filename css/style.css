@@ -5,3 +5,36 @@ h1, h2, h3, h4 {
 .app-page{
 	display: none;
 }
+
+.keypad {
+	/*display: inline-block;*/
+	margin: 0 auto;
+	width: 470px;
+}
+
+.widekey, .key {
+	margin: 5px 5px;
+	display: inline-block;
+	height: 75px;
+	width: 85px;
+	border: 1px solid black;
+	border-radius: 3px;
+	text-align: center;
+	line-height: 75px;
+	font-size: 36px;
+	cursor: pointer;
+}
+
+.widekey {
+	margin: 5px 35px;
+	width: 145px;
+	line-height: 70px;
+	font-size: 32px;
+}
+
+.disable-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
