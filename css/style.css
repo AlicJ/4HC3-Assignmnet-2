@@ -152,6 +152,22 @@ input {
 	font-size: 32px;
 }
 
+.key, .widekey {
+	background: rgb(255,255,255); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+}
+
+.key:active, .widekey:active {
+	background: rgb(255,255,255); /* Old browsers */
+	background: -moz-linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(bottom, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to top, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e5e5', endColorstr='#e5e5e5ffffff',GradientType=0 ); /* IE6-9 */
+}
+
 .disable-select {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -179,11 +195,16 @@ input {
 	background-image: url(../images/withdraw.png);
 }
 
+.sign-out-17a {
+	background-image: url(../images/sign-out.png);
+}
+
 .insert-2b,
 .swipe-2d,
 .login-success-4b,
 .insufficient-fund-7a,
-.withdraw-success-7b  {
+.withdraw-success-7b,
+.sign-out-17a  {
 	background-position: center 40%;
 	background-repeat: no-repeat;
 	background-size: 35%;
@@ -220,36 +241,32 @@ input {
 	background-position: center 60%;
 }
 
-.card.withdraw {
-	background-image: url(../images/withdraw.png);
-}
-.card.check-balance {
-	background-image: url(../images/check-balance.png);
-}
-.card.deposit {
-	background-image: url(../images/deposit.png);
-}
-.card.transfer {
-	background-image: url(../images/transfer.png);
-}
-.card.settings {
-	background-image: url(../images/settings.png);
-}
-.card.sign-out  {
-	background-image: url(../images/sign-out.png);
-}
-
-.card.withdraw,
-.card.check-balance,
-.card.deposit,
-.card.transfer,
-.card.settings,
-.card.sign-out {
-	background-position: center 75%;
-	background-repeat: no-repeat;
-	background-size: 50%;
+.card.withdraw img,
+.card.check-balance img,
+.card.deposit img,
+.card.transfer img,
+.card.reset-pin img,
+.card.sign-out img {
+	margin: 0 auto;
+	width: 150px;
+	height: 150px;
+	position: relative;
+	top: -20px;
 }
 
 .main-5a .card {
 	height: 235px;
+}
+
+.trans-history {
+	max-height: 360px;
+	overflow-y: scroll;
+}
+
+.trans-history table {
+	margin: 0 auto;
+}
+
+.trans-history th, .trans-history td {
+	padding: 1px 4px;
 }

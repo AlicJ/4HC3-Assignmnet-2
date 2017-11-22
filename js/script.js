@@ -1,7 +1,6 @@
 var prevState = "";
-// var curState = "begin-1a";
+var curState = "begin-1a";
 // var curState = "main-5a";
-var curState = "transfer-account-error-13a"
 var logOutTimeout;
 
 var inputAccountNumber;
@@ -360,7 +359,8 @@ $(document).on('click', '.check-balance', function(event) {
 $(document).on('click', '.historyBtn', function(event) {
 	event.preventDefault();
 	var ele = "";
-	$.each(account.history, function(index, val) {
+	var history = account.history.slice().reverse()
+	$.each(history, function(index, val) {
 		 ele += "<tr><td>"+val.action+"</td> <td>"+
 		 			formatCurrency(val.amount)+"</td> <td>"+
 		 			$.date(val.date, 'format', 'm/d/Y H:i')+"</td></tr>"
