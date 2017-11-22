@@ -1,29 +1,64 @@
 h1, h2, h3, h4 {
 	text-transform: capitalize;
-	margin-bottom: 40px;
+	margin-bottom: 30px;
 }
 
 footer {
 	width: 930px;
 	position: absolute;
 	bottom: 15px;
-	padding: 5px;
+	/*padding: 5px;*/
 	z-index: 1;
 }
 
 .homeBtn {
-	background: url("../images/home_icon.png");
+	/*background: url("../images/home-icon.png");*/
 }
 
 .backBtn {
-	background: url("../images/back_icon.png");
+	/*background: url("../images/back-icon.png");*/
 }
 
-.backBtn, .homeBtn {
-	background-position: center center;
-	background-size: contain;
-	background-repeat: no-repeat;
-	padding: 55px;
+.backBtn, .homeBtn, .historyBtn {
+	/*background-position: center center;*/
+	/*background-size: contain;*/
+	/*background-repeat: no-repeat;*/
+	padding: 35px;
+	border: 1px solid black;
+	border-radius: 3px;
+	font-size: 26px;
+	min-width: 130px;
+	text-align: center;
+
+	background: rgb(255,255,255); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+}
+
+.backBtn:active, .homeBtn:active, .historyBtn:active {
+	background: rgb(255,255,255); /* Old browsers */
+	background: -moz-linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(bottom, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to top, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e5e5', endColorstr='#e5e5e5ffffff',GradientType=0 ); /* IE6-9 */
+}
+
+.btnGradient {
+	background: rgb(255,255,255); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+}
+
+.btnGradient:active {
+	background: rgb(255,255,255); /* Old browsers */
+	background: -moz-linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(bottom, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to top, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e5e5', endColorstr='#e5e5e5ffffff',GradientType=0 ); /* IE6-9 */
 }
 
 .input-group {
@@ -53,18 +88,35 @@ input {
 	padding: 15px;
 }
 
+.begin-1a {
+	background: url(../images/touch.png);
+	background-position: center 35%;
+	background-repeat: no-repeat;
+	background-size: 30%;
+}
+
+.begin-1a h1 {
+	margin-bottom: 10px;
+}
+
 .langBtn {
 	display: inline-block;
 	font-size: 35px;
-	margin: 0 8px;
+	margin: 0 6px;
 	border: 1px solid black;
 	border-radius: 5px;
-	padding: 5px 15px;
+	padding: 15px 15px;
 }
 
-.langBtn.active {
+.langBtn.active {/*
 	color: white;
-	background-color: black;
+	background-color: black;*/
+	background: rgb(255,255,255); /* Old browsers */
+	background: -moz-linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(bottom, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to top, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e5e5', endColorstr='#e5e5e5ffffff',GradientType=0 ); /* IE6-9 */
+
 }
 
 .keypad {
@@ -104,4 +156,64 @@ input {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.insert-2b {
+	background: url(../images/insert-card.png);
+}
+
+.swipe-2d {
+	background: url(../images/swipe-card.png);
+}
+
+.insert-2b,
+.swipe-2d {
+	background-position: center 35%;
+	background-repeat: no-repeat;
+	background-size: 35%;
+}
+
+.withdraw {
+	background: url(../images/withdraw.png);
+}
+.check-balance {
+	background: url(../images/check-balance.png);
+}
+.deposit {
+	background: url(../images/deposit.png);
+}
+.transfer {
+	background: url(../images/transfer.png);
+}
+.settings {
+	background: url(../images/settings.png);
+}
+.sign-out  {
+	background: url(../images/sign-out.png);
+}
+
+.withdraw,
+.check-balance,
+.deposit,
+.transfer,
+.settings,
+.sign-out {
+	background-position: center 75%;
+	background-repeat: no-repeat;
+	background-size: 50%;
+}
+
+.withdraw,
+.check-balance,
+.deposit,
+.transfer,
+.settings,
+.sign-out {
+	background-position: center 75%;
+	background-repeat: no-repeat;
+	background-size: 50%;
+}
+
+.main-5a .card {
+	height: 235px;
 }

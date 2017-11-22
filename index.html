@@ -14,21 +14,25 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+	<!-- OSX 10.11.6 - Chrome Version 62.0.3202.94 -->
 	<div class="container-fluid mx-auto mt-3">
 			<div class="main-screen">
 				<div class="app-page wait">
-					<h2>your request is being processed, please wait...</h2>
+					<h2>your request is being processed, please wait</h2>
 				</div>
 
 				<div class="app-page begin-1a">
 					<h1 class="text-center">Tap Anywhere to Begin</h1>
-					<h3 class="text-center">Select Language:</h3>
-					<div class="langBtn active">English</div>
-					<div class="langBtn">Français</div>
-					<div class="langBtn">Português</div>
-					<div class="langBtn">简体中文</div>
-					<div class="langBtn">繁体中文</div>
-					<i class="fa fa-hand-o-up float-right" aria-hidden="true"></i>
+					<h4 class="text-center">Or Insert or Swipe Your Card</h4>
+					<footer>
+						<h3 class="text-center">Select Language:</h3>
+						<div class="langBtn active">English</div>
+						<div class="langBtn">Français</div>
+						<div class="langBtn">Españo</div>
+						<div class="langBtn">中文</div>
+						<div class="langBtn">ਪੰਜਾਬੀ</div>
+						<div class="langBtn">Tagalog</div>
+					</footer>
 				</div>
 
 				<div class="app-page signin-2a">
@@ -36,40 +40,41 @@
 					<div class="row">
 						<div class="col-sm">
 							<div class="card to-insert-card">
-								<img class="card-img-top" src=""></img>
 								<div class="card-body">
 									<h4 class="card-title">insert card</h4>
 								</div>
+								<img class="card-img-bottom" src="images/insert-card.png"></img>
+
 							</div>
 						</div>
 						<div class="col-sm">
 							<div class="card to-enter-account-number">
-								<img class="card-img-top" src=""></img>
 								<div class="card-body">
 									<h4 class="card-title">enter account number</h4>
 								</div>
+								<img class="card-img-bottom" src="images/enter-pin.png"></img>
 							</div>
 						</div>
 						<div class="col-sm">
 							<div class="card to-swipe-card">
-								<img class="card-img-top" src=""></img>
 								<div class="card-body">
 									<h4 class="card-title">swipe card</h4>
 								</div>
+								<img class="card-img-bottom" src="images/swipe-card.png"></img>
 							</div>
 						</div>
 					</div>
 					<footer class="mt-4">
-						<div class="float-right homeBtn"></div>
+						<div class="float-left backBtn">Back</div>
+						<div class="float-right homeBtn">Exit</div>
 					</footer>
 				</div>
 
 				<div class="app-page insert-2b">
 					<h2>please insert your card</h2>
-					<div class="text-center">Insert insert card picture here</div>
 					<footer class="mt-4">
-						<div class="float-left backBtn"></div>
-						<div class="float-right homeBtn"></div>
+						<div class="float-left backBtn">Back</div>
+						<div class="float-right homeBtn">Exit</div>
 					</footer>
 				</div>
 
@@ -105,17 +110,16 @@
 						</div>
 					</div>
 					<footer class="mt-4">
-						<div class="float-left backBtn"></div>
-						<div class="float-right homeBtn"></div>
+						<div class="float-left backBtn">Back</div>
+						<div class="float-right homeBtn">Exit</div>
 					</footer>
 				</div>
 
 				<div class="app-page swipe-2d">
 					<h2>please swipe your card</h2>
-					<div class="text-center">insert swipe card picture here</div>
 					<footer class="mt-4">
-						<div class="float-left backBtn"></div>
-						<div class="float-right homeBtn"></div>
+						<div class="float-left backBtn">Back</div>
+						<div class="float-right homeBtn">Exit</div>
 					</footer>
 				</div>
 
@@ -124,8 +128,8 @@
 					<i class="fa fa-times-circle" aria-hidden="true"></i>
 					<h3>you have <span class="error-time"></span> tries left</h3>
 					<footer class="mt-4">
-						<div class="float-left backBtn"></div>
-						<div class="float-right homeBtn"></div>
+						<div class="float-left backBtn">Back</div>
+						<div class="float-right homeBtn">Exit</div>
 					</footer>
 				</div>
 
@@ -137,7 +141,7 @@
 					</span>
 					<h4>Please speak to an employee to unlock your account</h4>
 					<footer class="mt-4">
-						<div class="float-right homeBtn"></div>
+						<div class="float-right homeBtn">Exit</div>
 					</footer>
 				</div>
 
@@ -145,8 +149,8 @@
 					<h2>Account number is not valid!</h2>
 					<i class="fa fa-times-circle" aria-hidden="true"></i>
 					<footer class="mt-4">
-						<div class="float-left backBtn"></div>
-						<div class="float-right homeBtn"></div>
+						<div class="float-left backBtn">Back</div>
+						<div class="float-right homeBtn">Exit</div>
 					</footer>
 				</div>
 
@@ -182,8 +186,8 @@
 						</div>
 					</div>
 					<footer class="mt-4">
-						<div class="float-left backBtn"></div>
-						<div class="float-right homeBtn"></div>
+						<div class="float-left backBtn">Back</div>
+						<div class="float-right homeBtn">Exit</div>
 					</footer>
 				</div>
 
@@ -201,13 +205,13 @@
 								<div class="card-body">
 									<h4 class="card-title">Withdraw</h4>
 								</div>
-								<img class="card-img-bottom" src="..." alt="withdraw">
+								<!-- <img class="card-img-bottom" src="images/withdraw.png" alt="withdraw"> -->
 							</div>
 							<div class="card check-balance">
 								<div class="card-body">
 									<h4 class="card-title">Check Balance</h4>
 								</div>
-								<img class="card-img-bottom" src="..." alt="check balance">
+								<!-- <img class="card-img-bottom" src="images/check.png" alt="check balance"> -->
 							</div>
 
 						</div>
@@ -216,13 +220,13 @@
 								<div class="card-body">
 									<h4 class="card-title">Deposit</h4>
 								</div>
-								<img class="card-img-bottom" src="..." alt="Deposit">
+								<!-- <img class="card-img-bottom" src="images/deposit.png" alt="Deposit"> -->
 							</div>
 							<div class="card transfer">
 								<div class="card-body">
 									<h4 class="card-title">Transfer</h4>
 								</div>
-								<img class="card-img-bottom" src="..." alt="Transfer">
+								<!-- <img class="card-img-bottom" src="images/transfer.png" alt="Transfer"> -->
 							</div>
 						</div>
 						<div class="col-sm">
@@ -230,13 +234,13 @@
 								<div class="card-body">
 									<h4 class="card-title">Settings</h4>
 								</div>
-								<img class="card-img-bottom" src="..." alt="Sign out">
+								<!-- <img class="card-img-bottom" src="images/settings.png" alt="Sign out"> -->
 							</div>
 							<div class="card sign-out">
 								<div class="card-body">
 									<h4 class="card-title">Sign out</h4>
 								</div>
-								<img class="card-img-bottom" src="..." alt="Sign out">
+								<!-- <img class="card-img-bottom" src="images/signout.png" alt="Sign out"> -->
 							</div>
 						</div>
 					</div>
@@ -274,8 +278,16 @@
 						</div>
 					</div>
 					<footer class="mt-4">
-						<div class="float-left backBtn"></div>
-						<div class="float-right homeBtn"></div>
+						<div class="float-left backBtn">Back</div>
+						<div class="float-right homeBtn">Main Menu</div>
+					</footer>
+				</div>
+
+				<div class="deposit-money-10b app-page">
+					<h2>please insert your cash or cheque</h2>
+					<footer class="mt-4">
+						<div class="float-left backBtn">Back</div>
+						<div class="float-right homeBtn">Main Menu</div>
 					</footer>
 				</div>
 
@@ -311,8 +323,8 @@
 						</div>
 					</div>
 					<footer class="mt-4">
-						<div class="float-left backBtn"></div>
-						<div class="float-right homeBtn"></div>
+						<div class="float-left backBtn">Back</div>
+						<div class="float-right homeBtn">Main Menu</div>
 					</footer>
 				</div>
 
@@ -321,8 +333,8 @@
 					<h2>You do not have sufficient funds for this transaction.</h2>
 					<i>icon for insufficient fund</i>
 					<footer class="mt-4">
-						<div class="float-left backBtn"></div>
-						<div class="float-right homeBtn"></div>
+						<div class="float-left backBtn">Back</div>
+						<div class="float-right homeBtn">Main Menu</div>
 					</footer>
 				</div>
 
@@ -336,8 +348,8 @@
 					<h2>deposit successful</h2>
 					<h3>you have: <span class="account-balance"></span></h3>
 					<footer class="mt-4">
-						<div class="float-left backBtn"></div>
-						<div class="float-right homeBtn"></div>
+						<div class="float-left backBtn">Back</div>
+						<div class="float-right homeBtn">Main Menu</div>
 					</footer>
 				</div>
 
@@ -345,8 +357,8 @@
 					<h2>You cannot transfer money to your own account!</h2>
 					<i>icon for error</i>
 					<footer class="mt-4">
-						<div class="float-left backBtn"></div>
-						<div class="float-right homeBtn"></div>
+						<div class="float-left backBtn">Back</div>
+						<div class="float-right homeBtn">Main Menu</div>
 					</footer>
 				</div>
 
@@ -354,8 +366,8 @@
 					<h2>transfer successful</h2>
 					<h3>you have: <span class="account-balance"></span></h3>
 					<footer class="mt-4">
-						<div class="float-left backBtn"></div>
-						<div class="float-right homeBtn"></div>
+						<div class="float-left backBtn">Back</div>
+						<div class="float-right homeBtn">Main Menu</div>
 					</footer>
 				</div>
 
@@ -366,8 +378,8 @@
 						<h4>account Balance: <span class="account-balance"></span></h4>
 					</div>
 					<footer class="mt-4">
-						<div class="float-left backBtn"></div>
-						<div class="btn btn-success float-right historyBtn">Transaction History</div>
+						<div class="float-left backBtn">Back</div>
+						<div class="float-right historyBtn">Transaction History</div>
 					</footer>
 				</div>
 
@@ -388,15 +400,15 @@
 						</tbody>
 					</table>
 					<footer class="mt-4">
-						<div class="float-left backBtn"></div>
-						<div class="float-right homeBtn"></div>
+						<div class="float-left backBtn">Back</div>
+						<div class="float-right homeBtn">Main Menu</div>
 					</footer>
 				</div>
 
 				<div class="app-page sign-out-17a">
 					<h2>you have successfully signed out</h2>
 					<footer class="mt-4">
-						<div class="btn btn-mt-4 homeBtn float-right"></div>
+						<div class="homeBtn float-right">Home</div>
 					</footer>
 				</div>
 
@@ -405,7 +417,7 @@
 				<div class="btn btn-primary" id="swipe-card">swipe card</div>
 				<div class="btn btn-primary mt-2" id="insert-card">Insert card</div>
 				<div class="btn btn-primary mt-2" id="take-card">Take card</div>
-				<div class="btn btn-primary mt-2" id="put-money">Put money</div>
+				<div class="btn btn-primary mt-2" id="put-money">Put money/cheque</div>
 				<div class="btn btn-primary mt-2" id="take-money">Take money</div>
 				<div class="btn btn-primary mt-2" id="unlock-account">Speak to clerk</div>
 			</div>

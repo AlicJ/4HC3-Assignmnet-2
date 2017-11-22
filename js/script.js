@@ -1,6 +1,6 @@
 var prevState = "";
-var curState = "begin-1a";
-//var curState = "main-5a";
+// var curState = "begin-1a";
+var curState = "main-5a";
 var logOutTimeout;
 
 var inputAccountNumber;
