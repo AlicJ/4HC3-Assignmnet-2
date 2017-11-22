@@ -8,6 +8,7 @@ var accountToTransfer;
 var MAX_ACCOUNT_NUMBER = 9999999999;
 var MIN_ACCOUNT_NUMBER = 1000000000;
 
+var insertCardOverwrite = false; //Used in case user inserts card on not the regular screen
 
 var account = {
 	accountNumber: 1234567890,
@@ -154,7 +155,7 @@ $(document).on('click', '.backBtn', function(event) {
 });
 
 $(document).on('click', '#swipe-card', function(event) {
-	if (curState == "swipe-2d") {
+	if (curState == "insert-2b" || curState == "begin-1a" || curState == "signin-2a" || curState == 'swipe-2d' || curState == "account-number-2c") {
 		if (isAccountLocked()) {
 			nextState("max-error-3b");
 		}else{
@@ -167,10 +168,11 @@ $(document).on('click', '#swipe-card', function(event) {
 });
 
 $(document).on('click', '#insert-card', function(event) {
-	if (curState == "insert-2b") {
+	if (curState == "insert-2b" || curState == "begin-1a" || curState == "signin-2a" || curState == 'swipe-2d' || curState == "account-number-2c") {
 		if (isAccountLocked()) {
 			nextState("max-error-3b");
 		}else{
+			insertCardOverwrite = true;
 			inputAccountNumber = '1234567890';
 			nextState("passcode-4a");
 		}
@@ -263,9 +265,11 @@ $(document).on('click', '.log-in', function(event) {
 	$("#passcode").val("")
 	if (inputAccountNumber == account.accountNumber && input == account.passcode){
 		account.errorTime = 0;
-		if (prevState == "insert-2b") {
+		if (insertCardOverwrite == true) {
+			insertCardOverwrite = false;
 			nextState("login-success-4b");
 		}else {
+			console.log("PREVSTATE: " + prevState);
 			nextState("main-5a");
 		}
 	}else{
