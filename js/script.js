@@ -151,6 +151,7 @@ $(document).on('click', '.backBtn', function(event) {
 							 "withdraw-amount-6a",
 							 "deposit-amount-10a",
 							 "transfer-amount-11a"]) >= 0) { prevState = "main-5a";}
+	if($.inArray(curState, ['transfer-success-14a']) >= 0){ prevState = "transfer-amount-11a";}
 	nextState(prevState);
 });
 
