@@ -81,7 +81,7 @@
 			<div class="app-page account-number-2c">
 				<h2>please enter your 10-digit account number</h2>
 				<div class="input-group">
-					<input type="text" class="form-control" id="account-number" placeholder="Account Number" autofocus>
+					<input type="text" class="form-control" id="account-number" placeholder="Account Number" maxlength="10" autofocus>
 				</div>
 				<div class="keypad-row">
 					<div class="keypad">
@@ -244,8 +244,9 @@
 			<div class="withdraw-amount-6a deposit-amount-10a transfer-amount-11a app-page">
 				<h2>Please enter the amount you wish to <span class="action"></span> </h2>
 				<div class="input-group">
-					<input type="text" class="form-control" id="amount" placeholder="Amount" autofocus>
+					<input type="text" class="form-control" id="amount" placeholder="Amount" maxlength="10" autofocus>
 				</div>
+				<div class="error-message"></div>
 				<div class="keypad-row">
 					<div class="keypad">
 						<div class="row">
@@ -290,7 +291,7 @@
 			<div class="app-page transfer-account-12a">
 				<h2>please enter the account number you wish to transfer to</h2>
 				<div class="input-group">
-					<input type="text" class="form-control" id="transfer-account-number" placeholder="Account Number" autofocus>
+					<input type="text" class="form-control" id="transfer-account-number" placeholder="Account Number" maxlength="10" autofocus>
 				</div>
 				<div class="keypad-row">
 					<div class="keypad">
@@ -414,7 +415,7 @@
 				<h1 class="change-passcode-18b">please enter new 4-digit Passcode</h1>
 				<h1 class="change-passcode-18c">please enter new 4-digit Passcode again</h1>
 				<div class="input-group">
-					<input type="password" class="form-control" id="change-passcode" placeholder="Passcode" autofocus>
+					<input type="password" class="form-control" id="change-passcode" placeholder="Passcode" maxlength="4" autofocus>
 				</div>
 				<div class="error-message"></div>
 				<div class="keypad-row">

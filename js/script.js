@@ -1,8 +1,9 @@
 var prevState = "";
-// var curState = "begin-1a";
-var curState = "main-5a";
+var curState = "begin-1a";
+// var curState = "main-5a";
 // var curState = "change-pin-18d";
 var logOutTimeout;
+var forceOutTimeout;
 
 var newPasscode;
 
@@ -127,9 +128,21 @@ function loadAccount(){
 	}
 }
 
+function startForceOutTimer(){
+	forceOutTimeout = setTimeout(function(){
+		$('.sign-out').click();
+		clearTimeout(forceOutTimeout);
+	},300000);
+}
+
 $(document).ready(function() {
 	nextState(curState, 0)
 	loadAccount();
+});
+
+$(document).on('click, keydown', 'body', function(event) {
+	clearTimeout(forceOutTimeout);
+	startForceOutTimer();
 });
 
 $(document).on('click', '.homeBtn', function(event) {
@@ -139,7 +152,7 @@ $(document).on('click', '.homeBtn', function(event) {
 	var l = curState.split("-");
 	var n = parseInt(l[l.length - 1]);
 	if (n < 5 || n == 17) {
-		clearInterval(logOutTimeout);
+		clearTimeout(logOutTimeout);
 		nextState("begin-1a", 0);
 	}else {
 		nextState("main-5a", 0);
@@ -251,7 +264,6 @@ $(document).on('click', '.to-swipe-card', function(event) {
 $(document).on('click', '.input-account-number', function(event) {
 	event.preventDefault();
 	var input = getInput("#account-number");
-	if (input.length != ACCOUNT_NUMBER_LENGTH) {return;}
 
 	if(input != account.accountNumber){
 		nextState("account-error-3c");
@@ -274,7 +286,6 @@ $(document).on('click', '.input-account-number', function(event) {
 $(document).on('click', '.log-in', function(event) {
 	event.preventDefault();
 	var input = getInput("#passcode");
-	if (input.length != PASSCODE_LENGTH) {return;}
 
 	if (inputAccountNumber == account.accountNumber && input == account.passcode){
 		account.errorTime = 0;
@@ -284,6 +295,7 @@ $(document).on('click', '.log-in', function(event) {
 		}else {
 			console.log("PREVSTATE: " + prevState);
 			nextState("main-5a");
+			startForceOutTimer();
 		}
 	}else{
 		account.errorTime += 1;
@@ -317,8 +329,12 @@ $(document).on('click', '.transfer', function(event) {
 
 $(document).on('click', '.enter-amount', function(event) {
 	event.preventDefault();
+	$(".error-message:visible").html("")
 	var input = getInput("#amount");
-	if (input <= 0) {return;}
+	if (input <= 0) {
+		$(".error-message:visible").html("You must enter a number greater than 0");
+		return;
+	}
 
 	if(curState == "withdraw-amount-6a") {
 		if (input > account.balance) {
@@ -412,7 +428,7 @@ $(document).on('click', '.change-passcode', function(event) {
 
 $(document).on('click', '.change-passcode-enter', function(event) {
 	event.preventDefault();
-	$(".error-message:visible").html("")
+	$(".error-message:visible").html("");
 	var input = getInput("#change-passcode");
 	if (input.length != PASSCODE_LENGTH) {
 		$(".error-message:visible").html("Your passcode must be 4 digits")
@@ -433,7 +449,7 @@ $(document).on('click', '.change-passcode-enter', function(event) {
 		nextState("change-passcode-18b");
 	} else if (curState == "change-passcode-18b") {
 		if (input == account.passcode) {
-			$(".error-message:visible").html("Your new passcode cannot be the same as the old one")
+			$(".error-message:visible").html("Your new passcode cannot be the same as the old one");
 			return;
 		}
 		newPasscode = input;
