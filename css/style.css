@@ -111,7 +111,7 @@ input {
 .main-screen {
 	position: relative;
 	width: 960px;
-	height: 620px;
+	height: 768px;
 	border: 1px black solid;
 	border-radius: 5px;
 	margin: 0 auto;
@@ -341,13 +341,13 @@ input {
 }
 
 .change-passcode-18b,
-.change-passcode-18c,
+.change-passcode-18c
  {
 	display: none;
 }
 
 .error-message {
-	height: 30px;
+	height: 36px;
 	font-size: 24px;
     text-align: center;
     color: red;

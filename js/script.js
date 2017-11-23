@@ -1,6 +1,6 @@
 var prevState = "";
-// var curState = "begin-1a";
-var curState = "main-5a";
+var curState = "begin-1a";
+// var curState = "main-5a";
 // var curState = "deposit-success-10b";
 var logOutTimeout;
 var forceOutTimeout;
@@ -23,11 +23,11 @@ var account = {
 	passcode: 1234,
 	balance: 1255,
 	history: [
-		{
-			action: "Deposit",
-			amount: 1255,
-			date: 1503831131922
-		}
+	{
+		action: "Deposit",
+		amount: 1255,
+		date: 1503831131922
+	}
 	],
 	errorTime: 0
 }
@@ -50,12 +50,19 @@ function nextState(s, time=200){
 		$("."+s).show();
 		prevState = curState;
 		curState = s;
+		console.log(prevState, curState);
 
-		switch (curState) {
-			case "main-5a":
-				updateAccountBalance(0);
-				updateAccountNumber(account.accountNumber);
-				break;
+		if (curState == "main-5a"){
+			updateAccountBalance(0);
+			updateAccountNumber(account.accountNumber);
+		}
+
+		if($.inArray(prevState,["swipe-2d","account-number-2c"]) >= 0) {
+			$(".prog.insert").hide();
+			$(".prog.no-insert").show();
+		} else if(prevState == "insert-2b") {
+			$(".prog.insert").show();
+			$(".prog.no-insert").hide();
 		}
 
 		$("input:visible").focus();
@@ -164,15 +171,15 @@ $(document).on('click', '.backBtn', function(event) {
 	$("input").val("");
 	// TODO: need to eject card at certain state
 	if ($.inArray(curState, ["account-number-2c",
-							 "passcode-4a"]) >= 0) { prevState = "signin-2a";}
-	if ($.inArray(curState, ["account-balance-15a",
-							 "withdraw-amount-6a",
-							 "deposit-amount-10a",
-							 "transfer-amount-11a",
-							 "change-passcode-18a"]) >= 0) { prevState = "main-5a";}
-	if($.inArray(curState, ['transfer-success-14a']) >= 0){ prevState = "transfer-amount-11a";}
-	nextState(prevState);
-});
+		"passcode-4a"]) >= 0) { prevState = "signin-2a";}
+		if ($.inArray(curState, ["account-balance-15a",
+			"withdraw-amount-6a",
+			"deposit-amount-10a",
+			"transfer-amount-11a",
+			"change-passcode-18a"]) >= 0) { prevState = "main-5a";}
+			if($.inArray(curState, ['transfer-success-14a']) >= 0){ prevState = "transfer-amount-11a";}
+		nextState(prevState);
+	});
 
 $(document).on('click', '#swipe-card', function(event) {
 	if (curState == "insert-2b" || curState == "begin-1a" || curState == "signin-2a" || curState == 'swipe-2d' || curState == "account-number-2c") {
@@ -180,6 +187,8 @@ $(document).on('click', '#swipe-card', function(event) {
 			nextState("max-error-3b");
 		}else{
 			inputAccountNumber = account.accountNumber;
+			$(".prog.no-insert").show();
+			$(".prog.insert").hide();
 			nextState("passcode-4a");
 		}
 	} else {
@@ -194,6 +203,8 @@ $(document).on('click', '#insert-card', function(event) {
 		}else{
 			inputAccountNumber = account.accountNumber;
 			insertCardOverwrite = true;
+			$(".prog.insert").show();
+			$(".prog.no-insert").hide();
 			nextState("passcode-4a");
 		}
 	} else {
@@ -380,9 +391,9 @@ $(document).on('click', '.historyBtn', function(event) {
 	var ele = "";
 	var history = account.history.slice().reverse();
 	$.each(history, function(index, val) {
-		 ele += "<tr><td>"+val.action+"</td> <td>"+
-		 			formatCurrency(val.amount)+"</td> <td>"+
-		 			$.date(val.date, 'format', 'm/d/Y H:i')+"</td></tr>"
+		ele += "<tr><td>"+val.action+"</td> <td>"+
+		formatCurrency(val.amount)+"</td> <td>"+
+		$.date(val.date, 'format', 'm/d/Y H:i')+"</td></tr>"
 	});
 	$(".trans-history-16a tbody").html(ele);
 	nextState("trans-history-16a");
@@ -414,11 +425,11 @@ $(document).on('click', '.key, .widekey', function(event) {
 			return;
 		// } else if ($.inArray(curState, ["account-number-2c", "transfer-account-12a",]) >= 0
 			// && curVal.length >= ACCOUNT_NUMBER_LENGTH) {
-		} else if (curVal.length >= ACCOUNT_NUMBER_LENGTH){
-			return;
-		}
-		$("input:visible").val(curVal + input);
-	}
+} else if (curVal.length >= ACCOUNT_NUMBER_LENGTH){
+	return;
+}
+$("input:visible").val(curVal + input);
+}
 });
 
 
@@ -448,6 +459,7 @@ $(document).on('click', '.change-passcode-enter', function(event) {
 			nextState("error-3a")
 			return;
 		}
+	$(".change-passcode-18a .backBtn").hide();
 		nextState("change-passcode-18b");
 	} else if (curState == "change-passcode-18b") {
 		if (input == account.passcode) {
