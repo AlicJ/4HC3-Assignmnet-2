@@ -12,7 +12,6 @@ footer {
 	z-index: 1;
 }
 
-
 .prog {
 	display: flex;
 	justify-content: center;
@@ -44,6 +43,9 @@ footer {
 	background: black;
 }
 
+.card-body {
+    padding: 1.15rem;
+}
 
 .homeBtn {
 	/*background: url("../images/home-icon.png");*/
@@ -190,162 +192,163 @@ input {
 }
 .red-strip {
 	background: red;
-	}.yellow-strip {
-		background: yellow;
-	}
+}
+.yellow-strip {
+	background: yellow;
+}
 
-	.green-strip,
-	.red-strip,
-	.yellow-strip {
-		width: 85%;
-		height: 5px;
-		margin: -10px auto 0;
-	}
+.green-strip,
+.red-strip,
+.yellow-strip {
+	width: 85%;
+    height: 5px;
+    margin: -10px auto 0;
+}
 
-	.key, .widekey {
-		background: rgb(255,255,255); /* Old browsers */
-		background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6-15 */
-		background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10-25,Safari5.1-6 */
-		background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
-	}
+.key, .widekey {
+	background: rgb(255,255,255); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+}
 
-	.key:active, .widekey:active {
-		background: rgb(255,255,255); /* Old browsers */
-		background: -moz-linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6-15 */
-		background: -webkit-linear-gradient(bottom, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10-25,Safari5.1-6 */
-		background: linear-gradient(to top, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e5e5', endColorstr='#e5e5e5ffffff',GradientType=0 ); /* IE6-9 */
-	}
+.key:active, .widekey:active {
+	background: rgb(255,255,255); /* Old browsers */
+	background: -moz-linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(bottom, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to top, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e5e5', endColorstr='#e5e5e5ffffff',GradientType=0 ); /* IE6-9 */
+}
 
-	.disable-select {
-		-webkit-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
-	}
+.disable-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 
-	.insert-2b {
-		background-image: url(../images/insert-card.png);
-	}
+.insert-2b {
+	background-image: url(../images/insert-card.png);
+}
 
-	.swipe-2d {
-		background-image: url(../images/swipe-card.png);
-	}
+.swipe-2d {
+	background-image: url(../images/swipe-card.png);
+}
 
-	.login-success-4b {
-		background-image: url(../images/take-card.png);
-	}
+.login-success-4b {
+	background-image: url(../images/take-card.png);
+}
 
-	.insufficient-fund-7a {
-		background-image: url(../images/insufficient-fund.png);
-	}
+.insufficient-fund-7a {
+	background-image: url(../images/insufficient-fund.png);
+}
 
-	.withdraw-success-7b {
-		background-image: url(../images/withdraw.png);
-	}
+.withdraw-success-7b {
+	background-image: url(../images/withdraw.png);
+}
 
-	.deposit-money-10b {
-		background-image: url(../images/deposit-money.png);
-	}
+.deposit-money-10b {
+	background-image: url(../images/deposit-money.png);
+}
 
-	.sign-out-17a {
-		background-image: url(../images/sign-out.png);
-	}
+.sign-out-17a {
+	background-image: url(../images/sign-out.png);
+}
 
-	.change-passcode-18d,
-	.deposit-success-10b {
-		background-image: url(../images/check-mark.png);
-	}
+.change-passcode-18d,
+.deposit-success-10b {
+	background-image: url(../images/check-mark.png);
+}
 
-	.insert-2b,
-	.swipe-2d,
-	.login-success-4b,
-	.insufficient-fund-7a,
-	.withdraw-success-7b,
-	.sign-out-17a,
-	.deposit-money-10b,
-	.change-passcode-18d,
-	.deposit-success-10b  {
-		background-position: center 40%;
-		background-repeat: no-repeat;
-		background-size: 35%;
-	}
+.insert-2b,
+.swipe-2d,
+.login-success-4b,
+.insufficient-fund-7a,
+.withdraw-success-7b,
+.sign-out-17a,
+.deposit-money-10b,
+.change-passcode-18d,
+.deposit-success-10b  {
+	background-position: center 40%;
+	background-repeat: no-repeat;
+	background-size: 35%;
+}
 
-	.withdraw-success-7b {
-		background-position: center 60%;
-	}
+.withdraw-success-7b {
+	background-position: center 60%;
+}
 
-	.error-3a,
-	.account-error-3c,
-	.transfer-account-error-13a {
-		background-image: url(../images/error.png);
-	}
+.error-3a,
+.account-error-3c,
+.transfer-account-error-13a {
+	background-image: url(../images/error.png);
+}
 
-	.max-error-3b {
-		background-image: url(../images/locked.png);
-	}
+.max-error-3b {
+	background-image: url(../images/locked.png);
+}
 
-	.error-3a,
-	.max-error-3b,
-	.account-error-3c,
-	.transfer-account-error-13a {
-		background-position: center 45%;
-		background-repeat: no-repeat;
-		background-size: 30%;
-	}
+.error-3a,
+.max-error-3b,
+.account-error-3c,
+.transfer-account-error-13a {
+	background-position: center 45%;
+	background-repeat: no-repeat;
+	background-size: 30%;
+}
 
-	.transfer-account-error-13a {
-		background-position: center 45%;
-	}
+.transfer-account-error-13a {
+	background-position: center 45%;
+}
 
-	.account-error-3c {
-		background-position: center 60%;
-	}
+.account-error-3c {
+	background-position: center 60%;
+}
 
-	.card.withdraw img,
-	.card.check-balance img,
-	.card.deposit img,
-	.card.transfer img,
-	.card.change-passcode img,
-	.card.sign-out img {
-		margin: 0 auto;
-		width: 150px;
-		height: 150px;
-		position: relative;
-		top: -20px;
-	}
+.card.withdraw img,
+.card.check-balance img,
+.card.deposit img,
+.card.transfer img,
+.card.change-passcode img,
+.card.sign-out img {
+	margin: 0 auto;
+	width: 150px;
+	height: 150px;
+	position: relative;
+	top: -20px;
+}
 
-	.main-5a .card {
-		height: 220px;
-	}
+.main-5a .card {
+	height: 220px;
+}
 
-	.text-red {
-		color: red;
-	}
+.text-red {
+	color: red;
+}
 
-	.trans-history {
-		max-height: 360px;
-		overflow-y: scroll;
-	}
+.trans-history {
+	max-height: 360px;
+	overflow-y: scroll;
+}
 
-	.trans-history table {
-		margin: 0 auto;
-	}
+.trans-history table {
+	margin: 0 auto;
+}
 
-	.trans-history th, .trans-history td {
-		padding: 1px 4px;
-	}
+.trans-history th, .trans-history td {
+	padding: 1px 4px;
+}
 
-	.change-passcode-18b,
-	.change-passcode-18c,
-	{
-		display: none;
-	}
+.change-passcode-18b,
+.change-passcode-18c,
+ {
+	display: none;
+}
 
-	.error-message {
-		height: 30px;
-		font-size: 24px;
-		text-align: center;
-		color: red;
-	}
+.error-message {
+	height: 30px;
+	font-size: 24px;
+    text-align: center;
+    color: red;
+}
