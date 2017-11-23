@@ -243,7 +243,8 @@ input {
 	background-image: url(../images/swipe-card.png);
 }
 
-.login-success-4b {
+.login-success-4b,
+.take-card-4c {
 	background-image: url(../images/take-card.png);
 }
 
@@ -278,7 +279,8 @@ input {
 .deposit-money-10b,
 .change-passcode-18d,
 .deposit-success-10b,
-.transfer-success-14a  {
+.transfer-success-14a,
+.take-card-4c  {
 	background-position: center 40%;
 	background-repeat: no-repeat;
 	background-size: 35%;

@@ -1,6 +1,6 @@
 var prevState = "";
-// var curState = "begin-1a";
-var curState = "main-5a";
+var curState = "begin-1a";
+// var curState = "main-5a";
 // var curState = "deposit-success-10b";
 var logOutTimeout;
 var forceOutTimeout;
@@ -108,7 +108,7 @@ function updateAccountBalance(action=null, amount, transferAccount=0) {
 	var amt = parseInt(amount);
 	if (action) {
 		if (action == "Deposit"){
-			account.balance = amt;
+			account.balance += amt;
 		}else {
 			account.balance -= amt;
 		}
@@ -161,12 +161,21 @@ $(document).ready(function() {
 $(document).on('click, keydown', 'body', function(event) {
 	clearTimeout(forceOutTimeout);
 	startForceOutTimer();
+
+	if(event.keyCode == 13) {
+		$(".enter-key:visible").click();
+	}
 });
 
 $(document).on('click', '.homeBtn', function(event) {
 	event.preventDefault();
 	$("input").val("");
-	// TODO: need to eject card at certain state
+
+	if (insertCardOverwrite) {
+		nextState("take-card-4c");
+		return;
+	}
+
 	var l = curState.split("-");
 	var n = parseInt(l[l.length - 1]);
 	if (n < 5 || n == 17) {
@@ -180,7 +189,12 @@ $(document).on('click', '.homeBtn', function(event) {
 $(document).on('click', '.backBtn', function(event) {
 	event.preventDefault();
 	$("input").val("");
-	// TODO: need to eject card at certain state
+
+	if (insertCardOverwrite && curState != "error-3a") {
+		nextState("take-card-4c");
+		return;
+	}
+
 	if ($.inArray(curState, ["account-number-2c",
 		"passcode-4a"]) >= 0) { prevState = "signin-2a";}
 		if ($.inArray(curState, ["account-balance-15a",
@@ -226,6 +240,8 @@ $(document).on('click', '#insert-card', function(event) {
 $(document).on('click', '#take-card', function(event) {
 	if (curState == "login-success-4b") {
 		nextState("main-5a", 0);
+	} else if (insertCardOverwrite) {
+		nextState("begin-1a", 0);
 	}else{
 		console.log("There is no card to take");
 	}
