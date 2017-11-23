@@ -12,6 +12,10 @@ footer {
 	z-index: 1;
 }
 
+.card-body {
+    padding: 1.15rem;
+}
+
 .homeBtn {
 	/*background: url("../images/home-icon.png");*/
 }
