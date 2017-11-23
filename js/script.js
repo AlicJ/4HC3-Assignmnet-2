@@ -1,7 +1,7 @@
 var prevState = "";
-var curState = "begin-1a";
-// var curState = "main-5a";
-// var curState = "change-pin-18d";
+// var curState = "begin-1a";
+var curState = "main-5a";
+// var curState = "deposit-success-10b";
 var logOutTimeout;
 var forceOutTimeout;
 
@@ -412,13 +412,15 @@ $(document).on('click', '.key, .widekey', function(event) {
 	} else {
 		if (curState.indexOf("passcode") > -1 && curVal.length >= PASSCODE_LENGTH) {
 			return;
-		} else if ($.inArray(curState, ["account-number-2c", "transfer-account-12a",]) >= 0
-			&& curVal.length >= ACCOUNT_NUMBER_LENGTH) {
+		// } else if ($.inArray(curState, ["account-number-2c", "transfer-account-12a",]) >= 0
+			// && curVal.length >= ACCOUNT_NUMBER_LENGTH) {
+		} else if (curVal.length >= ACCOUNT_NUMBER_LENGTH){
 			return;
 		}
 		$("input:visible").val(curVal + input);
 	}
 });
+
 
 $(document).on('click', '.change-passcode', function(event) {
 	event.preventDefault();
