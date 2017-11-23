@@ -79,7 +79,7 @@
 			</div>
 
 			<div class="app-page account-number-2c">
-				<h2>please enter account number</h2>
+				<h2>please enter your 10-digit account number</h2>
 				<div class="input-group">
 					<input type="text" class="form-control" id="account-number" placeholder="Account Number" autofocus>
 				</div>
@@ -89,18 +89,19 @@
 							<div class="key disable-select">7</div>
 							<div class="key disable-select">8</div>
 							<div class="key disable-select">9</div>
-							<div class="widekey">Clear</div>
+							<div class="widekey delete-key">Delete<div class="yellow-strip"></div></div>
 						</div>
 						<div class="row">
 							<div class="key disable-select">4</div>
 							<div class="key disable-select">5</div>
 							<div class="key disable-select">6</div>
-							<div class="widekey input-account-number">Enter</div>
+							<div class="widekey clear-key">Clear<div class="red-strip"></div></div>
 						</div>
 						<div class="row">
 							<div class="key disable-select">1</div>
 							<div class="key disable-select">2</div>
 							<div class="key disable-select">3</div>
+							<div class="widekey input-account-number">Enter<div class="green-strip"></div></div>
 						</div>
 						<div class="row">
 							<div class="key disable-select invisible"></div>
@@ -124,7 +125,6 @@
 			</div>
 
 			<div class="app-page error-3a">
-				<h1>Login failed</h1>
 				<h2>incorrect credentials!</h2>
 				<h2>you have <span class="error-time"></span> tries left</h2>
 				<footer class="mt-4">
@@ -134,7 +134,6 @@
 			</div>
 
 			<div class="app-page max-error-3b">
-				<h1>Login failed</h1>
 				<h2>max number of attempts exceeded!</h2>
 				<h3>Please speak to an employee to unlock your account</h3>
 				<footer class="mt-4">
@@ -143,7 +142,6 @@
 			</div>
 
 			<div class="app-page account-error-3c">
-				<h1>login failed</h1>
 				<h2>Account number is not valid!</h2>
 				<footer class="mt-4">
 					<div class="float-left backBtn">Back</div>
@@ -152,7 +150,7 @@
 			</div>
 
 			<div class="app-page passcode-4a">
-				<h2>please enter your passcode</h2>
+				<h2>please enter your 4-digit Passcode</h2>
 				<div class="input-group">
 					<input type="password" class="form-control" id="passcode" size="4" placeholder="Passcode" maxlength="4" autofocus>
 				</div>
@@ -162,18 +160,19 @@
 							<div class="key disable-select">7</div>
 							<div class="key disable-select">8</div>
 							<div class="key disable-select">9</div>
-							<div class="widekey">Clear</div>
+							<div class="widekey delete-key">Delete<div class="yellow-strip"></div></div>
 						</div>
 						<div class="row">
 							<div class="key disable-select">4</div>
 							<div class="key disable-select">5</div>
 							<div class="key disable-select">6</div>
-							<div class="widekey log-in">Enter</div>
+							<div class="widekey clear-key">Clear<div class="red-strip"></div></div>
 						</div>
 						<div class="row">
 							<div class="key disable-select">1</div>
 							<div class="key disable-select">2</div>
 							<div class="key disable-select">3</div>
+							<div class="widekey log-in">Enter<div class="green-strip"></div></div>
 						</div>
 						<div class="row">
 							<div class="key disable-select invisible"></div>
@@ -194,6 +193,7 @@
 			</div>
 
 			<div class="app-page main-5a">
+				<h1>main menu</h1>
 				<h2>what would you like to do?</h2>
 				<div class="row">
 					<div class="col-sm">
@@ -225,11 +225,11 @@
 						</div>
 					</div>
 					<div class="col-sm">
-						<div class="card btnGradient mb-4 reset-pin">
+						<div class="card btnGradient mb-4 change-passcode">
 							<div class="card-body">
-								<h4 class="card-title">reset-pin</h4>
+								<h4 class="card-title">Change Passcode</h4>
 							</div>
-							<img class="card-img-bottom" src="images/reset-pin.png">
+							<img class="card-img-bottom" src="images/change-pin.png">
 						</div>
 						<div class="card btnGradient sign-out">
 							<div class="card-body">
@@ -252,18 +252,19 @@
 							<div class="key disable-select">7</div>
 							<div class="key disable-select">8</div>
 							<div class="key disable-select">9</div>
-							<div class="widekey">Clear</div>
+							<div class="widekey delete-key">Delete<div class="yellow-strip"></div></div>
 						</div>
 						<div class="row">
 							<div class="key disable-select">4</div>
 							<div class="key disable-select">5</div>
 							<div class="key disable-select">6</div>
-							<div class="widekey enter-amount">Enter</div>
+							<div class="widekey clear-key">Clear<div class="red-strip"></div></div>
 						</div>
 						<div class="row">
 							<div class="key disable-select">1</div>
 							<div class="key disable-select">2</div>
 							<div class="key disable-select">3</div>
+							<div class="widekey enter-amount">Enter<div class="green-strip"></div></div>
 						</div>
 						<div class="row">
 							<div class="key disable-select invisible"></div>
@@ -297,18 +298,19 @@
 							<div class="key disable-select">7</div>
 							<div class="key disable-select">8</div>
 							<div class="key disable-select">9</div>
-							<div class="widekey">Clear</div>
+							<div class="widekey delete-key">Delete<div class="yellow-strip"></div></div>
 						</div>
 						<div class="row">
 							<div class="key disable-select">4</div>
 							<div class="key disable-select">5</div>
 							<div class="key disable-select">6</div>
-							<div class="widekey input-transfer-account-number">Enter</div>
+							<div class="widekey clear-key">Clear<div class="red-strip"></div></div>
 						</div>
 						<div class="row">
 							<div class="key disable-select">1</div>
 							<div class="key disable-select">2</div>
 							<div class="key disable-select">3</div>
+							<div class="widekey input-transfer-account-number">Enter<div class="green-strip"></div></div>
 						</div>
 						<div class="row">
 							<div class="key disable-select invisible"></div>
@@ -404,6 +406,61 @@
 				<h2>you have successfully signed out</h2>
 				<footer class="mt-4">
 					<div class="homeBtn float-right">Home</div>
+				</footer>
+			</div>
+
+			<div class="app-page change-passcode-18a change-passcode-18b change-passcode-18c">
+				<h1 class="change-passcode-18a">please enter old 4-digit Passcode</h1>
+				<h1 class="change-passcode-18b">please enter new 4-digit Passcode</h1>
+				<h1 class="change-passcode-18c">please enter new 4-digit Passcode again</h1>
+				<div class="input-group">
+					<input type="password" class="form-control" id="change-passcode" placeholder="Passcode" autofocus>
+				</div>
+				<div class="error-message"></div>
+				<div class="keypad-row">
+					<div class="keypad">
+						<div class="row">
+							<div class="key disable-select">7</div>
+							<div class="key disable-select">8</div>
+							<div class="key disable-select">9</div>
+							<div class="widekey delete-key">Delete<div class="yellow-strip"></div></div>
+						</div>
+						<div class="row">
+							<div class="key disable-select">4</div>
+							<div class="key disable-select">5</div>
+							<div class="key disable-select">6</div>
+							<div class="widekey clear-key">Clear<div class="red-strip"></div></div>
+						</div>
+						<div class="row">
+							<div class="key disable-select">1</div>
+							<div class="key disable-select">2</div>
+							<div class="key disable-select">3</div>
+							<div class="widekey change-passcode-enter">Enter<div class="green-strip"></div></div>
+						</div>
+						<div class="row">
+							<div class="key disable-select invisible"></div>
+							<div class="key disable-select">0</div>
+							<div class="key disable-select invisible"></div>
+						</div>
+					</div>
+				</div>
+				<footer class="mt-4">
+					<div class="float-left backBtn">Back</div>
+					<div class="float-right homeBtn">Main Menu</div>
+				</footer>
+			</div>
+
+			<div class="app-page change-passcode-18e">
+				<h1>Passcode- change success</h1>
+				<footer class="mt-4">
+					<div class="float-right homeBtn">Main Menu</div>
+				</footer>
+			</div>
+
+			<div class="app-page change-passcode-18d">
+				<h1>Passcode change success</h1>
+				<footer class="mt-4">
+					<div class="float-right homeBtn">Main Menu</div>
 				</footer>
 			</div>
 

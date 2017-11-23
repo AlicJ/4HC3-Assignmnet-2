@@ -1,6 +1,6 @@
 h1, h2, h3, h4 {
 	text-transform: capitalize;
-	margin-bottom: 30px;
+	/*margin-bottom: 30px;*/
 	text-align: center;
 }
 
@@ -152,6 +152,23 @@ input {
 	font-size: 32px;
 }
 
+.green-strip {
+	background: green;
+}
+.red-strip {
+	background: red;
+}.yellow-strip {
+	background: yellow;
+}
+
+.green-strip,
+.red-strip,
+.yellow-strip {
+	width: 85%;
+    height: 5px;
+    margin: -10px auto 0;
+}
+
 .key, .widekey {
 	background: rgb(255,255,255); /* Old browsers */
 	background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6-15 */
@@ -203,13 +220,18 @@ input {
 	background-image: url(../images/sign-out.png);
 }
 
+.change-passcode-18d {
+	background-image: url(../images/check-mark.png);
+}
+
 .insert-2b,
 .swipe-2d,
 .login-success-4b,
 .insufficient-fund-7a,
 .withdraw-success-7b,
 .sign-out-17a,
-.deposit-money-10b  {
+.deposit-money-10b,
+.change-passcode-18d  {
 	background-position: center 40%;
 	background-repeat: no-repeat;
 	background-size: 35%;
@@ -233,7 +255,7 @@ input {
 .max-error-3b,
 .account-error-3c,
 .transfer-account-error-13a {
-	background-position: center 75%;
+	background-position: center 45%;
 	background-repeat: no-repeat;
 	background-size: 30%;
 }
@@ -250,7 +272,7 @@ input {
 .card.check-balance img,
 .card.deposit img,
 .card.transfer img,
-.card.reset-pin img,
+.card.change-passcode img,
 .card.sign-out img {
 	margin: 0 auto;
 	width: 150px;
@@ -260,7 +282,7 @@ input {
 }
 
 .main-5a .card {
-	height: 235px;
+	height: 220px;
 }
 
 .trans-history {
@@ -274,4 +296,17 @@ input {
 
 .trans-history th, .trans-history td {
 	padding: 1px 4px;
+}
+
+.change-passcode-18b,
+.change-passcode-18c {
+	display: none;
+}
+
+.error-message {
+	min-height: 36px;
+	font-size: 24px;
+    text-align: center;
+    margin-top: 5px;
+    color: red;
 }

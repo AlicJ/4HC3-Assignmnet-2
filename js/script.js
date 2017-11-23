@@ -1,7 +1,10 @@
 var prevState = "";
 // var curState = "begin-1a";
 var curState = "main-5a";
+// var curState = "change-pin-18d";
 var logOutTimeout;
+
+var newPasscode;
 
 var inputAccountNumber;
 var amountToTransfer;
@@ -9,8 +12,8 @@ var accountToTransfer;
 var amountToDeposit;
 var MAX_ACCOUNT_NUMBER = 9999999999;
 var MIN_ACCOUNT_NUMBER = 1000000000;
-var MAX_PASSCODE_LENGTH = 4;
-var MAX_ACCOUNT_NUMBER_LENGTH = 10;
+var PASSCODE_LENGTH = 4;
+var ACCOUNT_NUMBER_LENGTH = 10;
 
 var insertCardOverwrite = false; //Used in case user inserts card on not the regular screen
 
@@ -54,6 +57,9 @@ function nextState(s, time=200){
 				break;
 		}
 
+		$("input:visible").focus();
+		$(".error-message:visible").html("");
+
 	}, time);
 
 }
@@ -70,13 +76,9 @@ function askMoreService(){
 	// no -> exit, show thank you screen
 }
 
-function getInputInt(selector) {
-	var input = parseInt($(selector).val());
+function getInput(selector) {
+	var input = $(selector).val();
 	$(selector).val("");
-
-	if (input <= 0 || isNaN(input)) {
-		return -1;
-	}
 	return input;
 }
 
@@ -153,7 +155,8 @@ $(document).on('click', '.backBtn', function(event) {
 	if ($.inArray(curState, ["account-balance-15a",
 							 "withdraw-amount-6a",
 							 "deposit-amount-10a",
-							 "transfer-amount-11a"]) >= 0) { prevState = "main-5a";}
+							 "transfer-amount-11a",
+							 "change-passcode-18a"]) >= 0) { prevState = "main-5a";}
 	if($.inArray(curState, ['transfer-success-14a']) >= 0){ prevState = "transfer-amount-11a";}
 	nextState(prevState);
 });
@@ -222,8 +225,6 @@ $(document).on('click', '#unlock-account', function(event) {
 
 
 $(document).on('click', '.begin-1a', function(event) {
-	console.log(event);
-	console.log(event.target.className)
 	if (event.target.className.indexOf("langBtn") >= 0) {return};
 	nextState("signin-2a", 0);
 	$(".homeBtn").show();
@@ -249,21 +250,15 @@ $(document).on('click', '.to-swipe-card', function(event) {
 
 $(document).on('click', '.input-account-number', function(event) {
 	event.preventDefault();
-	var input = getInputInt("#account-number");
-	if (input < 0) {return;}
+	var input = getInput("#account-number");
+	if (input.length != ACCOUNT_NUMBER_LENGTH) {return;}
 
 	if(input != account.accountNumber){
-		// account.errorTime += 1
-		// if (account.errorTime >= 3) {
-		// 	nextState("max-error-3b");
-		// 	$(".backBtn").hide();
-		// 	return;
-		// }
 		nextState("account-error-3c");
 		return;
 	}
 
-	if (input > MAX_ACCOUNT_NUMBER || input < MIN_ACCOUNT_NUMBER) {
+	if (input.length != ACCOUNT_NUMBER_LENGTH) {
 		nextState("account-error-3c");
 	} else {
 		inputAccountNumber = input;
@@ -278,10 +273,9 @@ $(document).on('click', '.input-account-number', function(event) {
 
 $(document).on('click', '.log-in', function(event) {
 	event.preventDefault();
-	var input = getInputInt("#passcode");
-	if (input < 0) {return;}
+	var input = getInput("#passcode");
+	if (input.length != PASSCODE_LENGTH) {return;}
 
-	$("#passcode").val("")
 	if (inputAccountNumber == account.accountNumber && input == account.passcode){
 		account.errorTime = 0;
 		if (insertCardOverwrite) {
@@ -293,6 +287,7 @@ $(document).on('click', '.log-in', function(event) {
 		}
 	}else{
 		account.errorTime += 1;
+		saveAccount();
 		if (account.errorTime >= 3) {
 			nextState("max-error-3b");
 			return;
@@ -322,8 +317,8 @@ $(document).on('click', '.transfer', function(event) {
 
 $(document).on('click', '.enter-amount', function(event) {
 	event.preventDefault();
-	var input = getInputInt("#amount");
-	if (input < 0) {return;}
+	var input = getInput("#amount");
+	if (input <= 0) {return;}
 
 	if(curState == "withdraw-amount-6a") {
 		if (input > account.balance) {
@@ -348,9 +343,8 @@ $(document).on('click', '.enter-amount', function(event) {
 
 $(document).on('click', '.input-transfer-account-number', function(event) {
 	event.preventDefault();
-	var input = getInputInt("#transfer-account-number");
-	if (input < 0) {return;}
-	if (input > MAX_ACCOUNT_NUMBER || input < MIN_ACCOUNT_NUMBER) {
+	var input = getInput("#transfer-account-number");
+	if (input.length != ACCOUNT_NUMBER_LENGTH) {
 		nextState("account-error-3c");
 	} else if (input == account.accountNumber) {
 		nextState("transfer-account-error-13a");
@@ -368,7 +362,7 @@ $(document).on('click', '.check-balance', function(event) {
 $(document).on('click', '.historyBtn', function(event) {
 	event.preventDefault();
 	var ele = "";
-	var history = account.history.slice().reverse()
+	var history = account.history.slice().reverse();
 	$.each(history, function(index, val) {
 		 ele += "<tr><td>"+val.action+"</td> <td>"+
 		 			formatCurrency(val.amount)+"</td> <td>"+
@@ -382,25 +376,75 @@ $(document).on('click', '.sign-out', function(event) {
 	event.preventDefault();
 	nextState("sign-out-17a");
 	logOutTimeout = setTimeout(function(){
-		nextState("begin-1a")
+		nextState("begin-1a");
 	}, 5000);
 });
 
 $(document).on('click', '.key, .widekey', function(event) {
 	event.preventDefault();
-	var input = $(this).html();
+	var input = $(this).html().split("<")[0];
+
 	var curVal = $("input:visible").val();
 	if (input == "Clear") {
 		$("input:visible").val("");
+	} else if (input == "Delete") {
+		curVal = curVal.slice(0, curVal.length-1);
+		console.log(curVal)
+		$("input:visible").val(curVal);
 	} else if (input == "Enter") {
 		//
 	} else {
-		if (curState == "passcode-4a" && curVal.length == MAX_PASSCODE_LENGTH) {
+		if (curState.indexOf("passcode") > -1 && curVal.length >= PASSCODE_LENGTH) {
 			return;
 		} else if ($.inArray(curState, ["account-number-2c", "transfer-account-12a",]) >= 0
-			&& curVal.length == MAX_ACCOUNT_NUMBER_LENGTH) {
+			&& curVal.length >= ACCOUNT_NUMBER_LENGTH) {
 			return;
 		}
 		$("input:visible").val(curVal + input);
+	}
+});
+
+$(document).on('click', '.change-passcode', function(event) {
+	event.preventDefault();
+	nextState("change-passcode-18a");
+	$(".change-passcode-18a .backBtn").show();
+});
+
+$(document).on('click', '.change-passcode-enter', function(event) {
+	event.preventDefault();
+	$(".error-message:visible").html("")
+	var input = getInput("#change-passcode");
+	if (input.length != PASSCODE_LENGTH) {
+		$(".error-message:visible").html("Your passcode must be 4 digits")
+		return;
+	}
+
+	if (curState == "change-passcode-18a") {
+		if (input != account.passcode) {
+			account.errorTime += 1;
+			saveAccount();
+			if (account.errorTime >= 3) {
+				nextState("max-error-3b");
+				return;
+			}
+			nextState("error-3a")
+			return;
+		}
+		nextState("change-passcode-18b");
+	} else if (curState == "change-passcode-18b") {
+		if (input == account.passcode) {
+			$(".error-message:visible").html("Your new passcode cannot be the same as the old one")
+			return;
+		}
+		newPasscode = input;
+		nextState("change-passcode-18c");
+	} else if (curState == "change-passcode-18c") {
+		if (input != newPasscode) {
+			$(".error-message:visible").html("New passcodes entered are not the same")
+			return;
+		}
+		account.passcode = input;
+		saveAccount();
+		nextState("change-passcode-18d");
 	}
 });
