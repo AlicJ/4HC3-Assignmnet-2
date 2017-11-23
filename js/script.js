@@ -1,6 +1,6 @@
 var prevState = "";
-var curState = "begin-1a";
-// var curState = "main-5a";
+// var curState = "begin-1a";
+var curState = "main-5a";
 // var curState = "deposit-success-10b";
 var logOutTimeout;
 var forceOutTimeout;
@@ -50,11 +50,21 @@ function nextState(s, time=200){
 		$("."+s).show();
 		prevState = curState;
 		curState = s;
-		console.log(prevState, curState);
 
-		if (curState == "main-5a"){
-			updateAccountBalance(0);
-			updateAccountNumber(account.accountNumber);
+		switch (curState) {
+			case "withdraw-amount-6a":
+			case "deposit-amount-10a":
+			case "transfer-amount-11a":
+			case "change-passcode-18a":
+			case "change-passcode-18b":
+			case "change-passcode-18c":
+			console.log("lalal")
+				$(".prog." + curState).css('display', 'flex');
+				break;
+			case "main-5a":
+				updateAccountBalance(0);
+				updateAccountNumber(account.accountNumber);
+				break;
 		}
 
 		if($.inArray(prevState,["swipe-2d","account-number-2c"]) >= 0) {
@@ -95,11 +105,12 @@ function isAccountLocked(){
 }
 
 function updateAccountBalance(action=null, amount, transferAccount=0) {
+	var amt = parseInt(amount);
 	if (action) {
 		if (action == "Deposit"){
-			account.balance += amount;
+			account.balance = amt;
 		}else {
-			account.balance -= amount;
+			account.balance -= amt;
 		}
 		if (action == "Transfer") {
 			action += " to Account " + transferAccount;
@@ -348,7 +359,7 @@ $(document).on('click', '.enter-amount', function(event) {
 	}
 
 	if(curState == "withdraw-amount-6a") {
-		if (input > account.balance) {
+		if (parseInt(input) > parseInt(account.balance)) {
 			nextState("insufficient-fund-7a");
 		}else {
 			updateAccountBalance("Withdraw", input);

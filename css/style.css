@@ -1,6 +1,6 @@
 h1, h2, h3, h4 {
 	text-transform: capitalize;
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 	text-align: center;
 }
 
@@ -10,6 +10,7 @@ footer {
 	bottom: 15px;
 	/*padding: 5px;*/
 	z-index: 1;
+	min-height: 85px;
 }
 
 .prog {
@@ -17,6 +18,9 @@ footer {
 	justify-content: center;
 	align-items: center;
 	height:80px;
+	width: 930px;
+    position: absolute;
+    z-index: 1;
 }
 .prog .dot {
 	display: inline-block;
@@ -65,6 +69,9 @@ footer {
 	font-size: 26px;
 	min-width: 130px;
 	text-align: center;
+
+	position: relative;
+	z-index: 999;
 
 	background: rgb(255,255,255); /* Old browsers */
 	background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6-15 */
@@ -257,7 +264,8 @@ input {
 }
 
 .change-passcode-18d,
-.deposit-success-10b {
+.deposit-success-10b,
+.transfer-success-14a {
 	background-image: url(../images/check-mark.png);
 }
 
@@ -269,7 +277,8 @@ input {
 .sign-out-17a,
 .deposit-money-10b,
 .change-passcode-18d,
-.deposit-success-10b  {
+.deposit-success-10b,
+.transfer-success-14a  {
 	background-position: center 40%;
 	background-repeat: no-repeat;
 	background-size: 35%;
@@ -341,7 +350,10 @@ input {
 }
 
 .change-passcode-18b,
-.change-passcode-18c
+.change-passcode-18c,
+.withdraw-amount-6a,
+.deposit-amount-10a,
+.transfer-amount-11a
  {
 	display: none;
 }
