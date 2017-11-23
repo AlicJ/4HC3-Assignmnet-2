@@ -337,7 +337,7 @@ input {
 }
 
 .trans-history {
-	max-height: 360px;
+	max-height: 560px;
 	overflow-y: scroll;
 }
 
@@ -346,7 +346,7 @@ input {
 }
 
 .trans-history th, .trans-history td {
-	padding: 1px 4px;
+	padding: 4px 8px;
 }
 
 .change-passcode-18b,

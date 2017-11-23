@@ -406,6 +406,7 @@ $(document).on('click', '.historyBtn', function(event) {
 		formatCurrency(val.amount)+"</td> <td>"+
 		$.date(val.date, 'format', 'm/d/Y H:i')+"</td></tr>"
 	});
+	// $('.trans-history-16a table').stickyTableHeaders('destroy');
 	$(".trans-history-16a tbody").html(ele);
 	nextState("trans-history-16a");
 });
