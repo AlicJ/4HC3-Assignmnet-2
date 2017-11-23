@@ -29,7 +29,9 @@ Additionally, Google Chrome can be obtained at: [https://www.google.com/chrome/b
 The following credentials are required to access all the features of the program.
 
 **Account Number:** 1234567890 (used for bank account number sign in)
+
 **Passcode:** 1234 (used for passcode verification, may be changed by the user)
+
 **Valid Account Numbers:** any 10 digit number (used for transferring money)
 
 While any 10 digit number is accepted as a valid bank account number, the only bank account number one can sign in with is 1234567890. Implementation for the other accounts was omitted as the interface would look the same, so there would be no additional value added to the usability or design of the application.
