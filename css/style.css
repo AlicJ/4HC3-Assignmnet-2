@@ -292,7 +292,8 @@ input {
 
 .error-3a,
 .account-error-3c,
-.transfer-account-error-13a {
+.transfer-account-error-13a,
+.deposit-fail-10c {
 	background-image: url(../images/error.png);
 }
 
@@ -303,7 +304,8 @@ input {
 .error-3a,
 .max-error-3b,
 .account-error-3c,
-.transfer-account-error-13a {
+.transfer-account-error-13a,
+.deposit-fail-10c {
 	background-position: center 45%;
 	background-repeat: no-repeat;
 	background-size: 30%;

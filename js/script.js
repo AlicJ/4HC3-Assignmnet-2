@@ -58,13 +58,12 @@ function nextState(s, time=200){
 			case "change-passcode-18a":
 			case "change-passcode-18b":
 			case "change-passcode-18c":
-			console.log("lalal")
-				$(".prog." + curState).css('display', 'flex');
-				break;
+			$(".prog." + curState).css('display', 'flex');
+			break;
 			case "main-5a":
-				updateAccountBalance(0);
-				updateAccountNumber(account.accountNumber);
-				break;
+			updateAccountBalance(0);
+			updateAccountNumber(account.accountNumber);
+			break;
 		}
 
 		if($.inArray(prevState,["swipe-2d","account-number-2c"]) >= 0) {
@@ -192,19 +191,22 @@ $(document).on('click', '.backBtn', function(event) {
 
 	if (insertCardOverwrite && curState != "error-3a") {
 		nextState("take-card-4c");
-		return;
-	}
-
-	if ($.inArray(curState, ["account-number-2c",
-		"passcode-4a"]) >= 0) { prevState = "signin-2a";}
-		if ($.inArray(curState, ["account-balance-15a",
-			"withdraw-amount-6a",
-			"deposit-amount-10a",
-			"transfer-amount-11a",
-			"change-passcode-18a"]) >= 0) { prevState = "main-5a";}
-			if($.inArray(curState, ['transfer-success-14a']) >= 0){ prevState = "transfer-amount-11a";}
+	}else if (curState == "deposit-money-10b") {
+		nextState("deposit-amount-10a");
+	}else if ($.inArray(curState, ["account-number-2c", "passcode-4a"]) >= 0) {
+		nextState("signin-2a")
+	}else if ($.inArray(curState, ["account-balance-15a",
+									"withdraw-amount-6a",
+									"deposit-amount-10a",
+									"transfer-amount-11a",
+									"change-passcode-18a"]) >= 0) {
+		nextState("main-5a");
+	}else if($.inArray(curState, ['transfer-success-14a']) >= 0){
+		nextState("transfer-amount-11a");
+	}else {
 		nextState(prevState);
-	});
+	}
+});
 
 $(document).on('click', '#swipe-card', function(event) {
 	if (curState == "insert-2b" || curState == "begin-1a" || curState == "signin-2a" || curState == 'swipe-2d' || curState == "account-number-2c") {
@@ -239,8 +241,10 @@ $(document).on('click', '#insert-card', function(event) {
 
 $(document).on('click', '#take-card', function(event) {
 	if (curState == "login-success-4b") {
+		insertCardOverwrite = false;
 		nextState("main-5a", 0);
 	} else if (insertCardOverwrite) {
+		insertCardOverwrite = false;
 		nextState("begin-1a", 0);
 	}else{
 		console.log("There is no card to take");
@@ -251,6 +255,16 @@ $(document).on('click', '#put-money', function(event) {
 	if(curState == "deposit-money-10b") {
 		updateAccountBalance("Deposit", amountToDeposit);
 		nextState("deposit-success-10b");
+	}else{
+		console.log("The machine is not taking your money");
+	}
+});
+
+$(document).on('click', '#put-wrong-money', function(event) {
+	event.preventDefault();
+	/* Act on the event */
+	if(curState == "deposit-money-10b") {
+		nextState("deposit-fail-10c");
 	}else{
 		console.log("The machine is not taking your money");
 	}
@@ -268,6 +282,7 @@ $(document).on('click', '#unlock-account', function(event) {
 	if(isAccountLocked()){
 		event.preventDefault();
 		account.errorTime = 0;
+		saveAccount();
 		nextState("begin-1a");
 	} else{
 		console.log("You went to the clerk but they couldn't help you because your account was not locked.");
@@ -327,6 +342,7 @@ $(document).on('click', '.log-in', function(event) {
 
 	if (inputAccountNumber == account.accountNumber && input == account.passcode){
 		account.errorTime = 0;
+		saveAccount();
 		if (insertCardOverwrite) {
 			insertCardOverwrite = false;
 			nextState("login-success-4b");
@@ -487,7 +503,7 @@ $(document).on('click', '.change-passcode-enter', function(event) {
 			nextState("error-3a")
 			return;
 		}
-	$(".change-passcode-18a .backBtn").hide();
+		$(".change-passcode-18a .backBtn").hide();
 		nextState("change-passcode-18b");
 	} else if (curState == "change-passcode-18b") {
 		if (input == account.passcode) {
